@@ -13,7 +13,7 @@ window.yearData = [
     month: "January",
     name: "Ramon Paul",
     father: "Sanjay Paul",
-    address: "Siliguri, Darjeeling, West Bengal",
+    address: "Siliguri, Darjeeling",
     certNo: "WB2024-002",
     subCast: "OBC"
   }
