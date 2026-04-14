@@ -1,32 +1,39 @@
-const search = document.getElementById("search");
-const month = document.getElementById("month");
 const year = document.getElementById("year");
+const month = document.getElementById("month");
+const search = document.getElementById("search");
 const result = document.getElementById("result");
 
 let certificates = [];
 
-// 🔥 Load all JSON data
-async function loadData() {
-    try {
-        let res1 = await fetch("2024.json");
-        let res2 = await fetch("2025.json");
-        let res3 = await fetch("2026.json");
+// 🔥 Year select → load JS file
+year.addEventListener("change", () => {
+    if (!year.value) return;
 
-        let d1 = await res1.json();
-        let d2 = await res2.json();
-        let d3 = await res3.json();
+    loadYearFile(year.value);
+});
 
-        certificates = [...d1, ...d2, ...d3];
+// 🔹 Load JS dynamically
+function loadYearFile(y) {
+    // আগের script remove
+    let old = document.getElementById("dataScript");
+    if (old) old.remove();
 
-        console.log("Data Loaded:", certificates);
-    } catch (err) {
-        result.innerHTML = "<p class='noData'>Data load error</p>";
-    }
+    // নতুন script create
+    let script = document.createElement("script");
+    script.src = `data/${y}.js`;
+    script.id = "dataScript";
+
+    script.onload = () => {
+        certificates = window.yearData || [];
+        console.log("Loaded:", certificates);
+        result.innerHTML = "";
+        search.value = "";
+    };
+
+    document.body.appendChild(script);
 }
 
-loadData();
-
-// 🔍 Search function
+// 🔍 Search
 function runSearch() {
     let value = search.value.toLowerCase().trim();
 
@@ -36,40 +43,32 @@ function runSearch() {
     }
 
     let filtered = certificates.filter(c =>
-        (year.value === "" || c.year === year.value) &&
-        (month.value === "" || c.month.toLowerCase() === month.value.toLowerCase()) &&
-        (
-            c.name.toLowerCase().startsWith(value) ||
-            c.certNo.toLowerCase().startsWith(value)
-        )
+        (month.value === "" || c.month === month.value) &&
+        c.name.toLowerCase().startsWith(value)
     );
 
     display(filtered);
 }
 
-// 🔹 Events
+// Events
 search.addEventListener("input", runSearch);
 month.addEventListener("change", runSearch);
-year.addEventListener("change", runSearch);
 
-// 🔹 Display
+// Display
 function display(data) {
     result.innerHTML = "";
 
     if (data.length === 0) {
-        result.innerHTML = "<p class='noData'>No Certificate Found</p>";
+        result.innerHTML = "<p>No Record Found</p>";
         return;
     }
 
     data.forEach(c => {
         result.innerHTML += `
-        <div class="card">
-            <b>Name:</b> ${c.name}<br>
-            <b>Certificate No:</b> ${c.certNo}<br>
-            <b>Caste:</b> ${c.caste}<br>
-            <b>Month:</b> ${c.month}<br>
-            <b>Year:</b> ${c.year}
-        </div>
-        `;
+        <div>
+            <b>${c.name}</b><br>
+            ${c.certNo}<br>
+            ${c.caste}
+        </div>`;
     });
 }
