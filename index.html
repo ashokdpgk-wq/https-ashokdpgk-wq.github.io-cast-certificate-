@@ -9,25 +9,28 @@ body {
     font-family: Arial;
     text-align:center;
     padding:20px;
-    background:#f4f6f9;
+    background: linear-gradient(120deg, #e0eafc, #cfdef3);
 }
 
-h2 { color:#333; }
+h2 {
+    color:#333;
+    margin-bottom:20px;
+}
 
 select, input {
-    padding:10px;
-    margin:8px;
+    padding:12px;
+    margin:10px;
     width:260px;
-    border-radius:6px;
+    border-radius:8px;
     border:1px solid #ccc;
+    font-size:16px;
 }
-
-#searchBox { display:none; }
 
 #result {
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
+    margin-top:20px;
 }
 
 .card {
@@ -35,9 +38,14 @@ select, input {
     padding:15px;
     margin:10px;
     width:260px;
-    border-radius:10px;
-    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
     text-align:left;
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:scale(1.05);
 }
 
 .noData {
@@ -51,23 +59,16 @@ select, input {
 
 <h2>Cast Certificate Search</h2>
 
-<select id="year">
-    <option value="">Select Year</option>
-    <option>2024</option>
-    <option>2025</option>
-    <option>2026</option>
-</select>
-
 <select id="month">
-    <option value="">Select Month</option>
-    <option>January</option>
-    <option>February</option>
-    <option>March</option>
+    <option value="">All Months</option>
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
 </select>
 
-<div id="searchBox">
-    <input type="text" id="search" placeholder="Search Name / Certificate No">
-</div>
+<br>
+
+<input type="text" id="search" placeholder="Type Name or Certificate No...">
 
 <div id="result"></div>
 
