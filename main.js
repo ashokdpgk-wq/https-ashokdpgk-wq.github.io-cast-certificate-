@@ -37,6 +37,7 @@ function loadData() {
 
 // 🔍 Live search
 search.addEventListener("input", () => {
+search.addEventListener("input", () => {
     let value = search.value.toLowerCase().trim();
 
     // ❌ empty হলে কিছুই দেখাবে না
@@ -55,7 +56,6 @@ search.addEventListener("input", () => {
 
     display(filtered);
 });
-
 // Show result
 function display(data) {
     result.innerHTML = "";
