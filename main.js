@@ -39,7 +39,7 @@ function loadData() {
 search.addEventListener("input", () => {
     let value = search.value.toLowerCase().trim();
 
-    // ❌ empty → hide সব
+    // ❌ empty হলে কিছুই দেখাবে না
     if (value === "") {
         result.innerHTML = "";
         return;
@@ -47,8 +47,10 @@ search.addEventListener("input", () => {
 
     let filtered = certificates.filter(c =>
         c.month === month.value &&
-        (c.name.toLowerCase().includes(value) ||
-         c.certNo.toLowerCase().includes(value))
+        (
+            c.name.toLowerCase().startsWith(value) ||
+            c.certNo.toLowerCase().startsWith(value)
+        )
     );
 
     display(filtered);
