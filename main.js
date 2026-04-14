@@ -6,14 +6,14 @@ const result = document.getElementById("result");
 
 let certificates = [];
 
-// Load JSON
+// Load JSON from ROOT (🔥 changed here)
 year.addEventListener("change", loadData);
 month.addEventListener("change", filterData);
 
 function loadData() {
     if (!year.value) return;
 
-    fetch(`data/${year.value}.json`)
+    fetch(`${year.value}.json`)   // 🔥 এখানে change
     .then(res => res.json())
     .then(data => {
         certificates = data;
