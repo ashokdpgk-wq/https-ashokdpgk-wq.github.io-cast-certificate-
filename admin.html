@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Drive Controlled E-Commerce</title>
+
+<style>
+body{font-family:Arial;margin:0;background:#f5f5f5}
+header{background:#111;color:#fff;padding:15px}
+.container{display:flex;flex-wrap:wrap;padding:10px}
+.card{background:#fff;margin:10px;padding:10px;width:200px}
+.cart{position:fixed;right:10px;top:80px;background:#fff;padding:10px;width:250px}
+.admin{display:none;background:#fff;padding:20px}
+button{padding:8px;width:100%}
+input{width:100%;padding:8px;margin:5px 0}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>🛒 Drive Store</h2>
+<button onclick="toggleAdmin()">Admin</button>
+<button onclick="loadOrders()">Track</button>
+</header>
+
+<div class="container" id="products"></div>
+
+<div class="cart">
+<h3>Cart</h3>
+<div id="cart"></div>
+
+<input id="name" placeholder="Name">
+<input id="phone" placeholder="Phone">
+<input id="address" placeholder="Address">
+
+<button onclick="order()">Order</button>
+</div>
+
+<div class="admin" id="admin">
+<h2>Admin Panel</h2>
+
+<input id="pname" placeholder="Product">
+<input id="pprice" placeholder="Price">
+<button onclick="addProduct()">Add</button>
+
+<h3>Orders</h3>
+<div id="orders"></div>
+</div>
+
+<script>
+
+const API = "YOUR_SCRIPT_URL";
+
+let cart=[];
+
+/* LOAD PRODUCTS */
+function loadProducts(){
+fetch(API+"?type=Products")
+.then(r=>r.json())
+.then(d=>{
+let box=document.getElementById("products");
+box.innerHTML="";
+
+for(let i=1;i<d.length;i++){
+box.innerHTML+=`
+<div class="card">
+<h4>${d[i][1]}</h4>
+<p>₹${d[i][2]}</p>
+<button onclick="add('${d[i][1]}',${d[i][2]})">Add</button>
+</div>`;
+}
+});
+}
+loadProducts();
+
+/* CART */
+function add(n,p){
+cart.push({name:n,price:p});
+renderCart();
+}
+
+function renderCart(){
+let c=document.getElementById("cart");
+c.innerHTML="";
+cart.forEach(i=>{
+c.innerHTML+=`<p>${i.name} - ₹${i.price}</p>`;
+});
+}
+
+/* ORDER */
+function order(){
+fetch(API,{
+method:"POST",
+body:JSON.stringify({
+action:"order",
+name:document.getElementById("name").value,
+phone:document.getElementById("phone").value,
+address:document.getElementById("address").value,
+items:JSON.stringify(cart)
+})
+});
+alert("Order Placed ✔");
+cart=[];
+renderCart();
+}
+
+/* ADMIN PANEL */
+function toggleAdmin(){
+let a=document.getElementById("admin");
+a.style.display=a.style.display=="block"?"none":"block";
+loadOrders();
+}
+
+/* ADD PRODUCT */
+function addProduct(){
+fetch(API,{
+method:"POST",
+body:JSON.stringify({
+action:"addProduct",
+name:document.getElementById("pname").value,
+price:document.getElementById("pprice").value
+})
+});
+}
+
+/* ORDERS */
+function loadOrders(){
+fetch(API+"?type=Orders")
+.then(r=>r.json())
+.then(d=>{
+let o=document.getElementById("orders");
+o.innerHTML="";
+
+for(let i=1;i<d.length;i++){
+o.innerHTML+=`
+<div style="background:#eee;margin:5px;padding:10px">
+<p>${d[i][1]}</p>
+<p>${d[i][5]}</p>
+
+<select onchange="update('${d[i][0]}',this.value)">
+<option>Pending</option>
+<option>Processing</option>
+<option>Shipped</option>
+<option>Received</option>
+</select>
+</div>`;
+}
+});
+}
+
+/* UPDATE STATUS (ADMIN ONLY via Apps Script) */
+function update(id,status){
+fetch(API,{
+method:"POST",
+body:JSON.stringify({
+action:"updateStatus",
+id:id,
+status:status
+})
+});
+}
+
+</script>
+
+</body>
+</html>
