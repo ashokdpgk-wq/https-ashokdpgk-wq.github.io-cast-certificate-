@@ -7,7 +7,7 @@
 h1{margin:0 0 6px}.sub{color:#697386;margin-bottom:18px}.search{display:flex;gap:10px}
 input{flex:1;padding:14px;border:1px solid #d5dce8;border-radius:12px;font-size:17px}button{border:0;border-radius:12px;padding:0 17px;background:#4255d6;color:white;font-size:15px;cursor:pointer}
 button.secondary{background:#697386}.hint,.privacy{font-size:13px;color:#788294;margin-top:10px}.count{margin-top:18px;color:#667085}
-.result{border:1px solid #e1e6ef;border-radius:12px;padding:13px;margin-top:9px;cursor:pointer}.result:hover{background:#fafbff}.result-actions{margin-top:10px;display:flex;gap:7px}.editbtn{padding:7px 11px;background:#1769aa;border-radius:8px}.editpanel{display:none;margin-top:10px;padding:12px;border:1px solid #dfe5ec;border-radius:10px;background:#f8fafc}.editpanel.show{display:block}.editgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.editfield label{display:block;font-size:12px;font-weight:650;color:#566174;margin-bottom:4px}.editfield input{width:100%;padding:9px;border:1px solid #ccd5de;border-radius:7px;font-size:14px}.savebtn{margin-top:10px;padding:9px 13px;background:#1769aa}.cancelbtn{margin-top:10px;padding:9px 13px;background:#697386}
+.result{border:1px solid #e1e6ef;border-radius:12px;padding:13px;margin-top:9px;cursor:pointer}.result:hover{background:#fafbff}.result-actions{margin-top:10px;display:flex;gap:7px}.editbtn{padding:7px 11px;background:#1769aa;border-radius:8px}.editpanel{display:none;margin-top:10px;padding:12px;border:1px solid #dfe5ec;border-radius:10px;background:#f8fafc}.editpanel.show{display:block;contain:content}.editgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.editfield label{display:block;font-size:12px;font-weight:650;color:#566174;margin-bottom:4px}.editfield input{width:100%;padding:9px;border:1px solid #ccd5de;border-radius:7px;font-size:14px}.savebtn{margin-top:10px;padding:9px 13px;background:#1769aa}.cancelbtn{margin-top:10px;padding:9px 13px;background:#697386}
 .name{font-weight:700;font-size:17px}.meta{font-size:13px;color:#718096;margin-top:3px}.details{display:none;border-top:1px solid #edf0f4;margin-top:10px;padding-top:7px}.result.open .details{display:block}
 .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed #e8ebf0}.label{font-weight:600;color:#566174}.value{text-align:right;word-break:break-word}
 #loginBox,#admin{display:none;margin-top:20px;padding-top:18px;border-top:1px solid #e6e9ef}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.toolbar button{padding:11px 14px}
@@ -22,8 +22,8 @@ table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px;display
 <div id="results"></div>
 <div id="loginBox"><b>Admin Password</b><br><br><input id="pw" type="password" placeholder="Password">
 <button onclick="login()">Login</button><div id="loginMsg" class="hint"></div></div>
-<div id="admin"><b>✏️ Edit Data</b><div class="hint">Year/জন্ম সাল পরিবর্তন করলে Age automatic হিসাব হবে। Download data.js করলে updated data সংরক্ষণ হবে।</div>
-<div class="toolbar"><button onclick="addRow()">+ Add Row</button><button onclick="downloadJS()">Download data.js</button><button class="danger" onclick="logout()">Logout</button></div><div id="editor"></div></div>
+<div id="admin"><b>✏️ Edit Data</b><div class="hint">Search result-এর পাশে ✏️ Edit চাপলে শুধু ওই নির্দিষ্ট ব্যক্তির তথ্যের edit field খুলবে। Year/জন্ম সাল পরিবর্তন করলে Age automatic হিসাব হবে।</div>
+<div class="toolbar"><button onclick="downloadJS()">Download data.js</button><button class="danger" onclick="logout()">Logout</button></div></div>
 <div class="privacy">নোট: browser-only password strong server security নয়।</div>
 </div></div>
 <script src="amal_kr_roy.js"></script>
@@ -54,19 +54,55 @@ function doSearch(){
 }
 document.getElementById("q").addEventListener("input",doSearch);document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch()});
 function openCustomerEdit(r,card){
- if(!loggedIn){document.getElementById("loginBox").style.display="block";document.getElementById("pw").focus();return}
- let old=card.querySelector(".editpanel"); if(old){old.classList.toggle("show");return}
- const p=document.createElement("div");p.className="editpanel show";const grid=document.createElement("div");grid.className="editgrid";
- Object.keys(r).forEach(k=>{const f=document.createElement("div");f.className="editfield";const l=document.createElement("label");l.textContent=k;const inp=document.createElement("input");inp.value=r[k]??"";inp.dataset.key=k;f.append(l,inp);grid.append(f)});
- const save=document.createElement("button");save.className="savebtn";save.textContent="💾 Save";save.onclick=e=>{e.stopPropagation();grid.querySelectorAll("input").forEach(i=>r[i.dataset.key]=i.value);calculateAge(r);doSearch()};
- const cancel=document.createElement("button");cancel.className="cancelbtn";cancel.textContent="Cancel";cancel.onclick=e=>{e.stopPropagation();p.remove()};p.append(grid,save,cancel);card.append(p);p.scrollIntoView({behavior:"smooth",block:"nearest"})
+ if(!loggedIn){
+   document.getElementById("loginBox").style.display="block";
+   document.getElementById("pw").focus();
+   return;
+ }
+ // Close any other open edit form; never create edit fields for other records.
+ document.querySelectorAll(".editpanel.show").forEach(x=>x.remove());
+ const p=document.createElement("div");p.className="editpanel show";
+ const grid=document.createElement("div");grid.className="editgrid";
+ Object.keys(r).forEach(k=>{
+   const f=document.createElement("div");f.className="editfield";
+   const l=document.createElement("label");l.textContent=k;
+   const inp=document.createElement("input");inp.value=r[k]??"";inp.dataset.key=k;
+   f.append(l,inp);grid.append(f);
+ });
+ const save=document.createElement("button");save.className="savebtn";save.textContent="💾 Save";
+ save.onclick=e=>{
+   e.stopPropagation();
+   grid.querySelectorAll("input").forEach(i=>r[i.dataset.key]=i.value);
+   calculateAge(r);
+   // Update only this result card instead of rebuilding the entire result list.
+   const rows=card.querySelectorAll(".editpanel .editfield input");
+   rows.forEach(i=>{ if(i.dataset.key in r) i.value=r[i.dataset.key]??""; });
+   p.remove();
+   const meta=card.querySelector(".meta");
+   if(meta) meta.textContent=Object.entries(r).slice(0,4).filter(x=>x[1]).map(x=>x[0]+": "+x[1]).join(" • ");
+   const d=card.querySelector(".details");
+   if(d){
+     d.innerHTML="";
+     Object.entries(r).forEach(([k,v])=>{
+       if(v==="")return;
+       const row=document.createElement("div");row.className="row";
+       const l=document.createElement("div");l.className="label";l.textContent=k;
+       const val=document.createElement("div");val.className="value";val.textContent=v;
+       row.append(l,val);d.append(row);
+     });
+   }
+ };
+ const cancel=document.createElement("button");cancel.className="cancelbtn";cancel.textContent="Cancel";
+ cancel.onclick=e=>{e.stopPropagation();p.remove()};
+ p.append(grid,save,cancel);card.append(p);
+ p.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 function toggleLogin(){document.getElementById("loginBox").style.display=loggedIn?"none":"block"}
-function login(){if(document.getElementById("pw").value===ADMIN_PASSWORD){loggedIn=true;document.getElementById("loginBox").style.display="none";document.getElementById("admin").style.display="block";renderEditor()}else document.getElementById("loginMsg").textContent="Wrong password"}
+function login(){if(document.getElementById("pw").value===ADMIN_PASSWORD){loggedIn=true;document.getElementById("loginBox").style.display="none";document.getElementById("admin").style.display="block"}else document.getElementById("loginMsg").textContent="Wrong password"}
 function logout(){loggedIn=false;document.getElementById("admin").style.display="none"}
-function addRow(){const obj={};Object.keys(DATA[0]||{"Name":"","Year":"","Age":""}).forEach(k=>obj[k]="");DATA.push(obj);renderEditor()}
+function addRow(){const obj={};Object.keys(DATA[0]||{"Name":"","Year":"","Age":""}).forEach(k=>obj[k]="");DATA.push(obj)}
 function renderEditor(){if(!loggedIn)return;refreshAges();const cols=Object.keys(DATA[0]||{"Name":"","Year":"","Age":""});let s="<table><thead><tr>"+cols.map(c=>"<th>"+esc(c)+"</th>").join("")+"<th>Delete</th></tr></thead><tbody>";
-DATA.forEach((r,i)=>{s+="<tr>"+cols.map(c=>"<td><input value=\""+escAttr(r[c]||"")+"\" onchange=\"DATA["+i+"]["+JSON.stringify(c)+"]=this.value;calculateAge(DATA["+i+"]);renderEditor()\"></td>").join("")+"<td><button class='danger' onclick='DATA.splice("+i+",1);renderEditor()'>Delete</button></td></tr>"});s+="</tbody></table>";document.getElementById("editor").innerHTML=s}
+DATA.forEach((r,i)=>{s+="<tr>"+cols.map(c=>"<td><input value=\""+escAttr(r[c]||"")+"\" onchange=\"DATA["+i+"]["+JSON.stringify(c)+"]=this.value;calculateAge(DATA["+i+"])\"></td>").join("")+"<td><button class='danger' onclick='DATA.splice("+i+",1)'>Delete</button></td></tr>"});s+="</tbody></table>";document.getElementById("editor").innerHTML=s}
 function esc(x){return String(x).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
 function escAttr(x){return esc(x).replace(/'/g,"&#39;")}
 function downloadJS(){refreshAges();const text="window.SEARCH_DATA = "+JSON.stringify(DATA,null,2)+";\n";const blob=new Blob([text],{type:"application/javascript;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="data.js";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
