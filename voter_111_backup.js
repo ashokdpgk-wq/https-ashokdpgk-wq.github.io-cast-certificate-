@@ -7327,5 +7327,572 @@ window.voterData=[
     "house": "n0140",
     "dob": "25",
     "epic": "SKW2213585"
+  },
+    {
+    "serial": "803",
+    "name": "SABITA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "DEBABRATA SARKAR",
+    "house": "n0134",
+    "dob": "39",
+    "epic": "SKW1256551"
+  },
+  {
+    "serial": "804",
+    "name": "RAJATKANTI SARKAR",
+    "relationType": "FATHER",
+    "relation": "MAHENDRA SARKAR",
+    "house": "n0134",
+    "dob": "71",
+    "epic": "WB/03/015/186573"
+  },
+  {
+    "serial": "805",
+    "name": "BABUN SARKAR",
+    "relationType": "FATHER",
+    "relation": "DILIP KUMAR SARKAR",
+    "house": "n0133",
+    "dob": "32",
+    "epic": "SKW1493410"
+  },
+  {
+    "serial": "806",
+    "name": "TAPAS KUMAR SARKAR",
+    "relationType": "FATHER",
+    "relation": "ANIL SARKAR",
+    "house": "n0135",
+    "dob": "39",
+    "epic": "SKW1493451"
+  },
+  {
+    "serial": "807",
+    "name": "TAPAN SARKAR",
+    "relationType": "FATHER",
+    "relation": "RAMANI SARKAR",
+    "house": "n0138",
+    "dob": "40",
+    "epic": "JLG3464047"
+  },
+  {
+    "serial": "808",
+    "name": "MAYARANI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "SUDHIR CHANDRA SARKAR",
+    "house": "n0133",
+    "dob": "66",
+    "epic": "WB/03/015/186224"
+  },
+  {
+    "serial": "809",
+    "name": "PARAMESHWAR SARKAR",
+    "relationType": "FATHER",
+    "relation": "BATASU SARKAR",
+    "house": "n0131",
+    "dob": "62",
+    "epic": "WB/03/015/186139"
+  },
+  {
+    "serial": "810",
+    "name": "SUTAPA SARKAR",
+    "relationType": "FATHER",
+    "relation": "DILIP KUMAR SARKAR",
+    "house": "n0133",
+    "dob": "26",
+    "epic": "SKW2145852"
+  },
+  {
+    "serial": "811",
+    "name": "RATAN SARKAR",
+    "relationType": "FATHER",
+    "relation": "GOBINDA SARKAR",
+    "house": "n0139",
+    "dob": "29",
+    "epic": "SKW1960962"
+  },
+  {
+    "serial": "812",
+    "name": "SUSMITA SARKAR MODAK",
+    "relationType": "HUSBAND",
+    "relation": "BISHNU MODAK",
+    "house": "n0138",
+    "dob": "28",
+    "epic": "SKW1961036"
+  },
+  {
+    "serial": "813",
+    "name": "FANI BHUSHAN SARKAR",
+    "relationType": "FATHER",
+    "relation": "GOLAK SARKAR",
+    "house": "n0189",
+    "dob": "65",
+    "epic": "SKW0479758"
+  },
+  {
+    "serial": "814",
+    "name": "KISHOR RANJAN SARKAR",
+    "relationType": "FATHER",
+    "relation": "ANIMESH SARKAR",
+    "house": "n0115",
+    "dob": "37",
+    "epic": "JLG3600632"
+  },
+  {
+    "serial": "815",
+    "name": "JYOTSNARANI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "BIPUL CHANDRA SARKAR",
+    "house": "n0135",
+    "dob": "61",
+    "epic": "WB/03/015/186376"
+  },
+  {
+    "serial": "816",
+    "name": "SANJAY SARKAR",
+    "relationType": "FATHER",
+    "relation": "BIPUL CHANDRA SARKAR",
+    "house": "n0135",
+    "dob": "37",
+    "epic": "JLG3686557"
+  },
+  {
+    "serial": "817",
+    "name": "SADHANA SARKAR",
+    "relationType": "FATHER",
+    "relation": "RAMANI SARKAR",
+    "house": "n0138",
+    "dob": "58",
+    "epic": "WB/03/015/186505"
+  },
+  {
+    "serial": "818",
+    "name": "ANIMESH CHANDRA SARKAR",
+    "relationType": "FATHER",
+    "relation": "SHRISH CHANDRA SARKAR",
+    "house": "n0115",
+    "dob": "57",
+    "epic": "WB/03/015/186504"
+  },
+  {
+    "serial": "819",
+    "name": "RATNA ROY SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "SAMIR SARKAR",
+    "house": "n0130",
+    "dob": "22",
+    "epic": "SKW2714384"
+  },
+  {
+    "serial": "820",
+    "name": "DILIP KUMAR SARKAR",
+    "relationType": "FATHER",
+    "relation": "HARENDRA NATH SARKAR",
+    "house": "n0133",
+    "dob": "61",
+    "epic": "WB/03/015/186206"
+  },
+  {
+    "serial": "821",
+    "name": "PUNNYA SARKAR",
+    "relationType": "FATHER",
+    "relation": "PARAMESHWAR SARKAR",
+    "house": "n0131",
+    "dob": "40",
+    "epic": "JLG3597507"
+  },
+  {
+    "serial": "822",
+    "name": "MANIKRISHNA SARKAR",
+    "relationType": "FATHER",
+    "relation": "PARAMESHWAR SARKAR",
+    "house": "n0131",
+    "dob": "50",
+    "epic": "JLG1337740"
+  },
+  {
+    "serial": "823",
+    "name": "PRATIMA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "ANIL SARKAR",
+    "house": "n0283",
+    "dob": "58",
+    "epic": "SKW2213635"
+  },
+  {
+    "serial": "824",
+    "name": "BASANTI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "DILIP KUMAR SARKAR",
+    "house": "n0133",
+    "dob": "56",
+    "epic": "SKW2213569"
+  },
+  {
+    "serial": "825",
+    "name": "SHANTANA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "CHANDRA KANTA SARKAR",
+    "house": "n0161",
+    "dob": "49",
+    "epic": "WB/03/017/117022"
+  },
+  {
+    "serial": "826",
+    "name": "SHUKLA MODAK SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "ASHU SARKAR",
+    "house": "n0161",
+    "dob": "23",
+    "epic": "SKW2578615"
+  },
+  {
+    "serial": "827",
+    "name": "REBARANI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "GANESH CHANDRA SARKAR",
+    "house": "n0140",
+    "dob": "48",
+    "epic": "JLG3464070"
+  },
+  {
+    "serial": "828",
+    "name": "UTTAM SARKAR",
+    "relationType": "FATHER",
+    "relation": "GOBINDA SARKAR",
+    "house": "n0139",
+    "dob": "33",
+    "epic": "SKW1493436"
+  },
+  {
+    "serial": "829",
+    "name": "BABLU SARKAR",
+    "relationType": "FATHER",
+    "relation": "SATYENDRA NATH SARKAR",
+    "house": "n0147",
+    "dob": "51",
+    "epic": "WB/03/015/186319"
+  },
+  {
+    "serial": "830",
+    "name": "SUJAN SARKAR",
+    "relationType": "FATHER",
+    "relation": "SUKUMAR SARKAR",
+    "house": "n0141",
+    "dob": "30",
+    "epic": "SKW1741453"
+  },
+  {
+    "serial": "831",
+    "name": "MINURANI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "SUKUMAR SARKAR",
+    "house": "n0141",
+    "dob": "62",
+    "epic": "WB/03/015/186197"
+  },
+  {
+    "serial": "832",
+    "name": "GOBINDA SARKAR",
+    "relationType": "FATHER",
+    "relation": "DHARANI KANTA SARKAR",
+    "house": "n0139",
+    "dob": "59",
+    "epic": "WB/03/015/186793"
+  },
+  {
+    "serial": "833",
+    "name": "SHUBHA SARKAR",
+    "relationType": "C/O",
+    "relation": "TAPAS KUMAR SARKAR",
+    "house": "n0135",
+    "dob": "27",
+    "epic": "SKW2145910"
+  },
+  {
+    "serial": "834",
+    "name": "LILI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "ANIMESH SARKAR",
+    "house": "n0115",
+    "dob": "51",
+    "epic": "JLG3063674"
+  },
+  {
+    "serial": "835",
+    "name": "BHARATI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "FANI BHUSHAN SARKAR",
+    "house": "n0190",
+    "dob": "58",
+    "epic": "JLG3685674"
+  },
+  {
+    "serial": "836",
+    "name": "MAMUNI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "SUNIL SARKAR",
+    "house": "n0275",
+    "dob": "27",
+    "epic": "SKW2068633"
+  },
+  {
+    "serial": "837",
+    "name": "BIMALESH SARKAR",
+    "relationType": "FATHER",
+    "relation": "SHRISH CHANDRA SARKAR",
+    "house": "n0115",
+    "dob": "54",
+    "epic": "WB/03/015/186428"
+  },
+  {
+    "serial": "838",
+    "name": "SABITA MODAK SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "PALASH SARKAR",
+    "house": "n0135",
+    "dob": "42",
+    "epic": "JLG3464039"
+  },
+  {
+    "serial": "839",
+    "name": "PALASH SARKAR",
+    "relationType": "FATHER",
+    "relation": "BIPUL CHANDRA SARKAR",
+    "house": "n0135",
+    "dob": "42",
+    "epic": "JLG3294576"
+  },
+  {
+    "serial": "840",
+    "name": "NIRMALA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "SANJAY SARKAR",
+    "house": "n0135",
+    "dob": "33",
+    "epic": "SKW1389329"
+  },
+  {
+    "serial": "841",
+    "name": "SUCHITRA SARKAR MODAK",
+    "relationType": "HUSBAND",
+    "relation": "PURNYA SARKAR",
+    "house": "n0131",
+    "dob": "35",
+    "epic": "SKW1493394"
+  },
+  {
+    "serial": "842",
+    "name": "RUPKUMAR SARKAR",
+    "relationType": "FATHER",
+    "relation": "KARTIK SARKAR",
+    "house": "n0154",
+    "dob": "23",
+    "epic": "SKW2529055"
+  },
+  {
+    "serial": "843",
+    "name": "ASHARANI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "NARAYAN CHANDRA SARKAR",
+    "house": "n0140",
+    "dob": "44",
+    "epic": "JLG3600673"
+  },
+  {
+    "serial": "844",
+    "name": "AMLARANI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "BHOLA NATH SARKAR",
+    "house": "n0154",
+    "dob": "69",
+    "epic": "WB/03/015/186221"
+  },
+  {
+    "serial": "845",
+    "name": "NARAYAN CHANDRA SARKAR",
+    "relationType": "FATHER",
+    "relation": "HARIDAS SARKAR",
+    "house": "n0140",
+    "dob": "45",
+    "epic": "JLG1336858"
+  },
+  {
+    "serial": "846",
+    "name": "GANESH CHANDRA SARKAR",
+    "relationType": "FATHER",
+    "relation": "HARIDAS SARKAR",
+    "house": "n0140",
+    "dob": "51",
+    "epic": "WB/03/015/186506"
+  },
+  {
+    "serial": "847",
+    "name": "MITHUN SARKAR",
+    "relationType": "FATHER",
+    "relation": "KARTIK SARKAR",
+    "house": "n0140",
+    "dob": "31",
+    "epic": "SKW1606938"
+  },
+  {
+    "serial": "848",
+    "name": "SHILPI MODAK SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "KISHOR RANJAN SARKAR",
+    "house": "n0115",
+    "dob": "31",
+    "epic": "SKW1961069"
+  },
+  {
+    "serial": "849",
+    "name": "BHAJAN SARKAR",
+    "relationType": "FATHER",
+    "relation": "RAMANI SARKAR",
+    "house": "n0138",
+    "dob": "51",
+    "epic": "WB/03/015/186844"
+  },
+  {
+    "serial": "850",
+    "name": "MAYARANI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "DHARANI KANTA SARKAR",
+    "house": "n0139",
+    "dob": "76",
+    "epic": "WB/03/015/186634"
+  },
+  {
+    "serial": "851",
+    "name": "SUNIL SARKAR",
+    "relationType": "FATHER",
+    "relation": "SUKUMAR SARKAR",
+    "house": "n0141",
+    "dob": "37",
+    "epic": "JLG3597556"
+  },
+  {
+    "serial": "852",
+    "name": "RUPASHRI SARKAR",
+    "relationType": "FATHER",
+    "relation": "KARTIK SARKAR",
+    "house": "n0154",
+    "dob": "26",
+    "epic": "SKW2145753"
+  },
+  {
+    "serial": "853",
+    "name": "GAJENDRA NATH SARKAR",
+    "relationType": "FATHER",
+    "relation": "HARENDRA NATH SARKAR",
+    "house": "n0133",
+    "dob": "79",
+    "epic": "WB/03/015/186539"
+  },
+  {
+    "serial": "854",
+    "name": "SUMON SARKAR",
+    "relationType": "FATHER",
+    "relation": "ANIMESH CHANDRA SARKAR",
+    "house": "n0115",
+    "dob": "29",
+    "epic": "SKW1912252"
+  },
+  {
+    "serial": "855",
+    "name": "DEBASHISH SARKAR",
+    "relationType": "FATHER",
+    "relation": "ANIMESH CHANDRA SARKAR",
+    "house": "n0115",
+    "dob": "28",
+    "epic": "SKW1960970"
+  },
+  {
+    "serial": "856",
+    "name": "SUPARNA MODAK SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "BIPLAB SARKAR",
+    "house": "n0115",
+    "dob": "25",
+    "epic": "SKW2197275"
+  },
+  {
+    "serial": "857",
+    "name": "SIMA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "BIKRAM SARKAR",
+    "house": "n0115",
+    "dob": "49",
+    "epic": "JLG0215558"
+  },
+  {
+    "serial": "858",
+    "name": "ARATI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "BHAJAN SARKAR",
+    "house": "n0138",
+    "dob": "39",
+    "epic": "JLG3294592"
+  },
+  {
+    "serial": "859",
+    "name": "DIPALI SARKAR ROY",
+    "relationType": "HUSBAND",
+    "relation": "MANIK SARKAR",
+    "house": "n0147",
+    "dob": "36",
+    "epic": "SKW0483743"
+  },
+  {
+    "serial": "860",
+    "name": "MANIK SARKAR",
+    "relationType": "FATHER",
+    "relation": "SATYENDRA NATH SARKAR",
+    "house": "n0147",
+    "dob": "38",
+    "epic": "SKW0483735"
+  },
+  {
+    "serial": "861",
+    "name": "SANDHYA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "KARTIK SARKAR",
+    "house": "n0154",
+    "dob": "43",
+    "epic": "JLG1941988"
+  },
+  {
+    "serial": "862",
+    "name": "SONALIRANI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "KARTIK SARKAR",
+    "house": "n0140",
+    "dob": "53",
+    "epic": "WB/03/015/186880"
+  },
+  {
+    "serial": "863",
+    "name": "ASHU SARKAR",
+    "relationType": "MOTHER",
+    "relation": "GITA SARKAR",
+    "house": "n0161",
+    "dob": "36",
+    "epic": "SKW1389337"
+  },
+  {
+    "serial": "864",
+    "name": "BIRMANI MODAK",
+    "relationType": "FATHER",
+    "relation": "SUSHIL MODAK",
+    "house": "n0135",
+    "dob": "45",
+    "epic": "JLG3294006"
+  },
+  {
+    "serial": "865",
+    "name": "SHUBHANKAR SARKAR",
+    "relationType": "FATHER",
+    "relation": "SUDHIR CHANDRA SARKAR",
+    "house": "n0133",
+    "dob": "32",
+    "epic": "SKW1493428"
   }
 ]
