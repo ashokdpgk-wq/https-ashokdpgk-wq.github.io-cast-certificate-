@@ -1355,7 +1355,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "RATNESWAR ROY",
     "house": "n0010",
-    "dob": "39",
+    "dob": "1987",
     "epic": "JLG3597309"
   },
   {
@@ -1364,7 +1364,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "RATNESWAR ROY",
     "house": "n0010",
-    "dob": "79",
+    "dob": "1947",
     "epic": "WB/03/015/186580"
   },
   {
@@ -1373,7 +1373,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "NIRMAL ROY",
     "house": "n0012",
-    "dob": "51",
+    "dob": "1975",
     "epic": "SKW2372811"
   },
   {
@@ -1382,7 +1382,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "SURJYODEB ROY",
     "house": "n0236",
-    "dob": "31",
+    "dob": "1995",
     "epic": "SKW1606953"
   },
   {
@@ -1391,7 +1391,7 @@ window.voterData=[
     "relationType": "MOTHER",
     "relation": "ANITA ROY",
     "house": "n0006",
-    "dob": "26",
+    "dob": "2000",
     "epic": "SKW2212744"
   },
   {
@@ -1400,7 +1400,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "UKIL CHANDRA ROY",
     "house": "n0019",
-    "dob": "44",
+    "dob": "1982",
     "epic": "JLG3293636"
   },
   {
@@ -1409,7 +1409,7 @@ window.voterData=[
     "relationType": "MOTHER",
     "relation": "MINOTI ROY",
     "house": "n0033",
-    "dob": "24",
+    "dob": "2002",
     "epic": "SKW2495257"
   },
   {
@@ -1418,7 +1418,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "RABINDRANATH ROY",
     "house": "n0039",
-    "dob": "61",
+    "dob": "1965",
     "epic": "JLG3531027"
   },
   {
@@ -1427,7 +1427,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "BISWAJIT ROY",
     "house": "n00",
-    "dob": "28",
+    "dob": "1998",
     "epic": "SKW2224731"
   },
   {
@@ -1436,7 +1436,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "MUNULAL ROY",
     "house": "n0054",
-    "dob": "25",
+    "dob": "2001",
     "epic": "SKW2680726"
   },
   {
@@ -1445,7 +1445,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "JITEN ROY",
     "house": "n0130",
-    "dob": "23",
+    "dob": "2003",
     "epic": "SKW2621100"
   },
   {
@@ -1454,7 +1454,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "NABIN ROY",
     "house": "n0024",
-    "dob": "23",
+    "dob": "2003",
     "epic": "SKW2544666"
   },
   {
@@ -1463,7 +1463,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "FULCHAND ROY",
     "house": "n0293",
-    "dob": "26",
+    "dob": "2000",
     "epic": "SKW2145977"
   },
   {
@@ -1472,7 +1472,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "RAJKUMAR ROY",
     "house": "n0006",
-    "dob": "40",
+    "dob": "1986",
     "epic": "SKW1388685"
   },
   {
@@ -1481,7 +1481,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "LAL MOHAN ROY",
     "house": "n0006",
-    "dob": "82",
+    "dob": "1944",
     "epic": "SKW2437689"
   },
   {
@@ -1490,7 +1490,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "SUBHASH ROY",
     "house": "n0008",
-    "dob": "29",
+    "dob": "1997",
     "epic": "SKW1862416"
   },
   {
@@ -1499,7 +1499,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "BHABENDRA NATH ROY",
     "house": "n0003",
-    "dob": "37",
+    "dob": "1989",
     "epic": "JLG3686094"
   },
   {
@@ -1508,7 +1508,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "TARAK CHANDRA ROY",
     "house": "n0008",
-    "dob": "57",
+    "dob": "1969",
     "epic": "WB/03/015/186234"
   },
   {
@@ -1517,7 +1517,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "LALMOHAN ROY",
     "house": "n0006",
-    "dob": "51",
+    "dob": "1975",
     "epic": "WB/03/015/186212"
   },
   {
@@ -1526,7 +1526,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "BHABANI ROY",
     "house": "n0005",
-    "dob": "43",
+    "dob": "1983",
     "epic": "JLG3294386"
   },
   {
@@ -1535,7 +1535,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "LALITA ROY",
     "house": "n0005",
-    "dob": "43",
+    "dob": "1983",
     "epic": "JLG3597275"
   },
   {
@@ -1544,7 +1544,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "LAL MOHAN ROY",
     "house": "n0006",
-    "dob": "43",
+    "dob": "1983",
     "epic": "JLG3063401"
   },
   {
@@ -1553,7 +1553,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "RAGHUNATH ROY",
     "house": "n0020",
-    "dob": "72",
+    "dob": "1954",
     "epic": "SKW2397610"
   },
   {
@@ -1562,7 +1562,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "TAPAN ROY",
     "house": "n0209",
-    "dob": "33",
+    "dob": "1993",
     "epic": "SKW1481019"
   },
   {
@@ -1571,7 +1571,7 @@ window.voterData=[
     "relationType": "HUSBAND",
     "relation": "AMAL ROY",
     "house": "n0015",
-    "dob": "24",
+    "dob": "2002",
     "epic": "RIY2462414"
   },
   {
@@ -1580,7 +1580,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "DHANAPATI ROY",
     "house": "n0280",
-    "dob": "27",
+    "dob": "1999",
     "epic": "SKW2068682"
   },
   {
@@ -1589,7 +1589,7 @@ window.voterData=[
     "relationType": "FATHER",
     "relation": "SURENDRA NATH ROY",
     "house": "n0231",
-    "dob": "71",
+    "dob": "1955",
     "epic": "WB/03/015/186464"
   },
   {
@@ -7328,7 +7328,7 @@ window.voterData=[
     "dob": "25",
     "epic": "SKW2213585"
   },
-    {
+  {
     "serial": "803",
     "name": "SABITA SARKAR",
     "relationType": "HUSBAND",
@@ -7894,5 +7894,608 @@ window.voterData=[
     "house": "n0133",
     "dob": "32",
     "epic": "SKW1493428"
+  },
+  {
+    "serial": "866",
+    "name": "BHARATI MODAK SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "GAJENDRA NATH SARKAR",
+    "house": "n0133",
+    "dob": "42",
+    "epic": "SKW1388925"
+  },
+  {
+    "serial": "867",
+    "name": "BINATA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "BIMALESH SARKAR",
+    "house": "n0115",
+    "dob": "50",
+    "epic": "WB/03/015/186537"
+  },
+  {
+    "serial": "868",
+    "name": "SATYARANJAN SARKAR",
+    "relationType": "FATHER",
+    "relation": "MEGHARAM SARKAR",
+    "house": "n0147",
+    "dob": "71",
+    "epic": "WB/03/015/186211"
+  },
+  {
+    "serial": "869",
+    "name": "BABAI SARKAR",
+    "relationType": "FATHER",
+    "relation": "BABLU SARKAR",
+    "house": "n0147",
+    "dob": "23",
+    "epic": "SKW2730943"
+  },
+  {
+    "serial": "870",
+    "name": "CHITRA ROY SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "RANJIT ROY",
+    "house": "n0131",
+    "dob": "46",
+    "epic": "JLG3063799"
+  },
+  {
+    "serial": "871",
+    "name": "SAMIR SARKAR",
+    "relationType": "FATHER",
+    "relation": "BHAJAN SARKAR",
+    "house": "n0138",
+    "dob": "25",
+    "epic": "SKW2213544"
+  },
+  {
+    "serial": "872",
+    "name": "BIPLAB SARKAR",
+    "relationType": "FATHER",
+    "relation": "BIMALESH SARKAR",
+    "house": "n0115",
+    "dob": "28",
+    "epic": "SKW2145878"
+  },
+  {
+    "serial": "873",
+    "name": "MAMPI SARKAR",
+    "relationType": "FATHER",
+    "relation": "SADHAN SARKAR",
+    "house": "n0138",
+    "dob": "26",
+    "epic": "SKW2145795"
+  },
+  {
+    "serial": "874",
+    "name": "UJJAL SARKAR",
+    "relationType": "FATHER",
+    "relation": "SUKUMAR SARKAR",
+    "house": "n0286",
+    "dob": "27",
+    "epic": "SKW2068740"
+  },
+  {
+    "serial": "875",
+    "name": "KARTIK SARKAR",
+    "relationType": "FATHER",
+    "relation": "HARIDAS SARKAR",
+    "house": "n0140",
+    "dob": "59",
+    "epic": "WB/03/015/186708"
+  },
+  {
+    "serial": "876",
+    "name": "JYOTSNA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "HARIDAS SARKAR",
+    "house": "n0140",
+    "dob": "76",
+    "epic": "WB/03/015/186196"
+  },
+  {
+    "serial": "877",
+    "name": "SURAJIT SARKAR",
+    "relationType": "FATHER",
+    "relation": "FANI BHUSHAN SARKAR",
+    "house": "n0189",
+    "dob": "29",
+    "epic": "SKW1862507"
+  },
+  {
+    "serial": "878",
+    "name": "CHANDRA KANTA SARKAR",
+    "relationType": "FATHER",
+    "relation": "PRAFULLA SARKAR",
+    "house": "n0161",
+    "dob": "53",
+    "epic": "WB/03/015/186182"
+  },
+  {
+    "serial": "879",
+    "name": "BIKASH SARKAR",
+    "relationType": "FATHER",
+    "relation": "BIMALESH SARKAR",
+    "house": "n0167",
+    "dob": "35",
+    "epic": "SKW1388974"
+  },
+  {
+    "serial": "880",
+    "name": "DIPAK SARKAR",
+    "relationType": "FATHER",
+    "relation": "SUDHIR CHANDRA SARKAR",
+    "house": "n0133",
+    "dob": "32",
+    "epic": "SKW1741446"
+  },
+  {
+    "serial": "881",
+    "name": "BIPUL CHANDRA SARKAR",
+    "relationType": "FATHER",
+    "relation": "SUSHIL CHANDRA SARKAR",
+    "house": "n0135",
+    "dob": "68",
+    "epic": "WB/03/015/186373"
+  },
+  {
+    "serial": "882",
+    "name": "SUKUMAR SARKAR",
+    "relationType": "FATHER",
+    "relation": "HEM CHANDRA SARKAR",
+    "house": "n0141",
+    "dob": "67",
+    "epic": "WB/03/015/186524"
+  },
+  {
+    "serial": "883",
+    "name": "JYOTSNA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "SADHAN SARKAR",
+    "house": "n0138",
+    "dob": "44",
+    "epic": "JLG3464054"
+  },
+  {
+    "serial": "884",
+    "name": "DILIP KUMAR SARKAR",
+    "relationType": "FATHER",
+    "relation": "JOGESH CHANDRA SARKAR",
+    "house": "n0151",
+    "dob": "57",
+    "epic": "JLG3294014"
+  },
+  {
+    "serial": "885",
+    "name": "SATYABALA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "MANIKRISHNA SARKAR",
+    "house": "n0164",
+    "dob": "39",
+    "epic": "MFW2978625"
+  },
+  {
+    "serial": "886",
+    "name": "SANGITA ROY",
+    "relationType": "HUSBAND",
+    "relation": "UTTAM ROY",
+    "house": "n0125",
+    "dob": "20",
+    "epic": "SKW2799013"
+  },
+  {
+    "serial": "887",
+    "name": "MOUSUMI SARKAR",
+    "relationType": "FATHER",
+    "relation": "NARAYAN SARKAR",
+    "house": "n0140",
+    "dob": "20",
+    "epic": "SKW2803237"
+  },
+  {
+    "serial": "888",
+    "name": "SUBHOMAY ROY",
+    "relationType": "FATHER",
+    "relation": "BHABESH ROY",
+    "house": "n0266",
+    "dob": "19",
+    "epic": "SKW2805687"
+  },
+  {
+    "serial": "889",
+    "name": "KRISHNA ROY",
+    "relationType": "HUSBAND",
+    "relation": "BISWAJIT ROY",
+    "house": "n0122",
+    "dob": "22",
+    "epic": "SKW2808186"
+  },
+  {
+    "serial": "890",
+    "name": "LATA ROY",
+    "relationType": "HUSBAND",
+    "relation": "SONA ROY",
+    "house": "n0130",
+    "dob": "27",
+    "epic": "SKW2808343"
+  },
+  {
+    "serial": "891",
+    "name": "PRASENJIT ROY",
+    "relationType": "FATHER",
+    "relation": "PRADIP ROY",
+    "house": "n0122",
+    "dob": "20",
+    "epic": "SKW2818714"
+  },
+  {
+    "serial": "892",
+    "name": "SUSMITA ROY",
+    "relationType": "FATHER",
+    "relation": "SUSHIL CHANDRA ROY",
+    "house": "n0145",
+    "dob": "19",
+    "epic": "SKW2818722"
+  },
+  {
+    "serial": "893",
+    "name": "BIJAY MODAK",
+    "relationType": "FATHER",
+    "relation": "PRADIP MODAK",
+    "house": "n0152",
+    "dob": "20",
+    "epic": "SKW2818730"
+  },
+  {
+    "serial": "894",
+    "name": "ANUPAMA ADHIKARI",
+    "relationType": "FATHER",
+    "relation": "MAHESHWAR ADHIKARI",
+    "house": "n0148",
+    "dob": "20",
+    "epic": "SKW2819266"
+  },
+  {
+    "serial": "895",
+    "name": "RITA ROY",
+    "relationType": "HUSBAND",
+    "relation": "PARIMAL ROY",
+    "house": "n0174",
+    "dob": "23",
+    "epic": "SKW2822021"
+  },
+  {
+    "serial": "896",
+    "name": "APARNA ROY",
+    "relationType": "HUSBAND",
+    "relation": "RANJIT ROY",
+    "house": "n00",
+    "dob": "22",
+    "epic": "RCQ2090546"
+  },
+  {
+    "serial": "897",
+    "name": "MOUMITA ADHIKARI",
+    "relationType": "FATHER",
+    "relation": "DHANANJAY ADHIKARI",
+    "house": "n0137",
+    "dob": "19",
+    "epic": "SKW2850543"
+  },
+  {
+    "serial": "898",
+    "name": "TARIT ROY",
+    "relationType": "FATHER",
+    "relation": "ALOK ROY",
+    "house": "n0125",
+    "dob": "20",
+    "epic": "SKW2857605"
+  },
+  {
+    "serial": "899",
+    "name": "RAMEN DEB",
+    "relationType": "FATHER",
+    "relation": "SWAPAN DEB",
+    "house": "n0176",
+    "dob": "35",
+    "epic": "SKW1388982"
+  },
+  {
+    "serial": "900",
+    "name": "DIPALIRANI DEB",
+    "relationType": "HUSBAND",
+    "relation": "SWAPAN KUMAR DEB",
+    "house": "n0176",
+    "dob": "51",
+    "epic": "WB/03/015/186543"
+  },
+  {
+    "serial": "901",
+    "name": "BELA RANI DEB",
+    "relationType": "HUSBAND",
+    "relation": "CHINI MOHAN DEB",
+    "house": "n0176",
+    "dob": "86",
+    "epic": "JLG3743580"
+  },
+  {
+    "serial": "902",
+    "name": "RITA DEB",
+    "relationType": "HUSBAND",
+    "relation": "ASHOK DEB",
+    "house": "n0176",
+    "dob": "54",
+    "epic": "JLG3743606"
+  },
+  {
+    "serial": "903",
+    "name": "LAXMAN DEB",
+    "relationType": "FATHER",
+    "relation": "ASHOK DEB",
+    "house": "n0176",
+    "dob": "29",
+    "epic": "SKW1862556"
+  },
+  {
+    "serial": "904",
+    "name": "SWAPAN KUMAR DEB",
+    "relationType": "FATHER",
+    "relation": "CHINIMOHAN DEB",
+    "house": "n0176",
+    "dob": "58",
+    "epic": "WB/03/015/186318"
+  },
+  {
+    "serial": "905",
+    "name": "SAMEN DEB",
+    "relationType": "FATHER",
+    "relation": "SWAPAN KUMAR DEB",
+    "house": "n0176",
+    "dob": "29",
+    "epic": "SKW1862572"
+  },
+  {
+    "serial": "906",
+    "name": "ASHOK DEB",
+    "relationType": "FATHER",
+    "relation": "CHINI MOHAN DEB",
+    "house": "n0176",
+    "dob": "59",
+    "epic": "JLG3743598"
+  },
+  {
+    "serial": "907",
+    "name": "FULOBALA ADHIKARI",
+    "relationType": "HUSBAND",
+    "relation": "DHANANJAY ADHIKARI",
+    "house": "n0191",
+    "dob": "37",
+    "epic": "MFW2977841"
+  },
+  {
+    "serial": "908",
+    "name": "GOUTOM MAHANTA",
+    "relationType": "FATHER",
+    "relation": "TAPAN MAHANTA",
+    "house": "n0298",
+    "dob": "28",
+    "epic": "SKW2146009"
+  },
+  {
+    "serial": "909",
+    "name": "TAPAN MAHANTA",
+    "relationType": "FATHER",
+    "relation": "KANTI MAHANTA",
+    "house": "n0172",
+    "dob": "61",
+    "epic": "WB/03/015/186486"
+  },
+  {
+    "serial": "910",
+    "name": "UTTAM MAHANTA",
+    "relationType": "FATHER",
+    "relation": "TAPAN MAHANTA",
+    "house": "n0172",
+    "dob": "36",
+    "epic": "SKW1388990"
+  },
+  {
+    "serial": "911",
+    "name": "PURNIMARANI MAHANTA",
+    "relationType": "HUSBAND",
+    "relation": "TAPAN MAHANTA",
+    "house": "n0172",
+    "dob": "56",
+    "epic": "WB/03/015/186452"
+  },
+  {
+    "serial": "912",
+    "name": "PRIYANKA ROY",
+    "relationType": "FATHER",
+    "relation": "KRISHNA KANTA ROY",
+    "house": "n0136",
+    "dob": "27",
+    "epic": "RCQ1671304"
+  },
+  {
+    "serial": "913",
+    "name": "CHANDANA ROY",
+    "relationType": "FATHER",
+    "relation": "DHIRENDRA NATH ROY",
+    "house": "n0294",
+    "dob": "39",
+    "epic": "SKW0484238"
+  },
+  {
+    "serial": "914",
+    "name": "PABI ROY",
+    "relationType": "FATHER",
+    "relation": "PABITRA ROY",
+    "house": "n0264",
+    "dob": "29",
+    "epic": "SKW1862481"
+  },
+  {
+    "serial": "915",
+    "name": "ASHOK ROY",
+    "relationType": "FATHER",
+    "relation": "GAJANI ROY",
+    "house": "n0186",
+    "dob": "32",
+    "epic": "SKW1741578"
+  },
+  {
+    "serial": "916",
+    "name": "GAJIN ROY",
+    "relationType": "FATHER",
+    "relation": "MAIKANTA ROY",
+    "house": "n0186",
+    "dob": "90",
+    "epic": "WB/03/015/030571"
+  },
+  {
+    "serial": "917",
+    "name": "RABINDRA NATH SARKAR",
+    "relationType": "FATHER",
+    "relation": "KHAGENDRA NATH SARKAR",
+    "house": "n0174",
+    "dob": "63",
+    "epic": "WB/03/015/186842"
+  },
+  {
+    "serial": "918",
+    "name": "PRATIMA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "RABINDRA NATH SARKAR",
+    "house": "n0174",
+    "dob": "53",
+    "epic": "WB/03/015/186529"
+  },
+  {
+    "serial": "919",
+    "name": "HRIDAY SARKAR",
+    "relationType": "FATHER",
+    "relation": "RABINDRA NATH SARKAR",
+    "house": "n000",
+    "dob": "25",
+    "epic": "SKW2213593"
+  },
+  {
+    "serial": "920",
+    "name": "BUDHYA SARKAR",
+    "relationType": "FATHER",
+    "relation": "BANKIM SARKAR",
+    "house": "n0251",
+    "dob": "25",
+    "epic": "SKW2213601"
+  },
+  {
+    "serial": "921",
+    "name": "SANDIP SARKAR",
+    "relationType": "FATHER",
+    "relation": "SURAJIT SARKAR",
+    "house": "n0250",
+    "dob": "23",
+    "epic": "SKW2528883"
+  },
+  {
+    "serial": "922",
+    "name": "RINKU SARKAR",
+    "relationType": "FATHER",
+    "relation": "BANKIM CHANDRA SARKAR",
+    "house": "n0251",
+    "dob": "24",
+    "epic": "SKW2482560"
+  },
+  {
+    "serial": "923",
+    "name": "CHANCHALA SARKAR",
+    "relationType": "FATHER",
+    "relation": "CHANDRA KANTA SARKAR",
+    "house": "n0021",
+    "dob": "21",
+    "epic": "SKW2680692"
+  },
+  {
+    "serial": "924",
+    "name": "SUJAL SARKAR",
+    "relationType": "FATHER",
+    "relation": "RABINDRA NATH SARKAR",
+    "house": "n0174",
+    "dob": "30",
+    "epic": "SKW1741586"
+  },
+  {
+    "serial": "925",
+    "name": "SIMA SAHA",
+    "relationType": "HUSBAND",
+    "relation": "BISWANATH SAHA",
+    "house": "n0178",
+    "dob": "61",
+    "epic": "WB/03/015/186473"
+  },
+  {
+    "serial": "926",
+    "name": "BISWAJIT SAHA",
+    "relationType": "FATHER",
+    "relation": "BISWANATH SAHA",
+    "house": "n0178",
+    "dob": "34",
+    "epic": "SKW1389048"
+  },
+  {
+    "serial": "927",
+    "name": "BISWADIP SAHA",
+    "relationType": "FATHER",
+    "relation": "BISWANATH SAHA",
+    "house": "n0178",
+    "dob": "27",
+    "epic": "SKW2145894"
+  },
+  {
+    "serial": "928",
+    "name": "ARPANA SAHA SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "NARAYAN SARKAR",
+    "house": "n0173",
+    "dob": "31",
+    "epic": "SKW1606995"
+  },
+  {
+    "serial": "929",
+    "name": "ARPANA ROY",
+    "relationType": "HUSBAND",
+    "relation": "CHANDAN ROY",
+    "house": "n0233",
+    "dob": "27",
+    "epic": "SKW2062792"
+  },
+  {
+    "serial": "930",
+    "name": "TUMPA ROY",
+    "relationType": "HUSBAND",
+    "relation": "SHUBHANKAR SARKAR",
+    "house": "n0133",
+    "dob": "27",
+    "epic": "SKW2062800"
+  },
+  {
+    "serial": "931",
+    "name": "BANASHREE ADHIKARI SARKAR",
+    "relationType": "HUSBAND",
+    "relation": "BABUN SARKAR",
+    "house": "n0133",
+    "dob": "26",
+    "epic": "SKW2817989"
+  },
+  {
+    "serial": "932",
+    "name": "SUMANA SARKAR",
+    "relationType": "FATHER",
+    "relation": "BIKRAM SARKAR",
+    "house": "n0115",
+    "dob": "20",
+    "epic": "SKW2822989"
   }
 ]
