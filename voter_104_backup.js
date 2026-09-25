@@ -1,4 +1,4 @@
-[
+window.voterData=[
   {
     "serial": "1",
     "name": "DIPANKAR ROY",
