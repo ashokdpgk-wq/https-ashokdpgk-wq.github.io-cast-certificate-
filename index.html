@@ -1783,14 +1783,18 @@ function backWork(){
  //=========================
 // Create Part 1 - Part 150
 //=========================
+const voterParts = [104, 110, 111, 112, 113];
+
 let html = "";
-for(let i=110;i<=113;i++){
+
+voterParts.forEach(function(part){
     html += `
-    <button onclick="openVoterPage(${i})">
-        Part - ${i}
+    <button onclick="openVoterPage(${part})">
+        Part - ${part}
     </button>
     `;
-}
+});
+
 document.getElementById("voterPartList").innerHTML = html;
 //=========================
 // Open Part Page
