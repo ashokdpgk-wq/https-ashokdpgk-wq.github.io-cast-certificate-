@@ -52,5 +52,59 @@ window.voterData=[
     "house": "n0269",
     "dob": "40",
     "epic": "SKW2066678"
+  },
+   {
+    "serial": "7",
+    "name": "JAMUNA ROY ADHIKARI",
+    "relationType": "HUSBAND",
+    "relation": "ISHWAR ADHIKARI",
+    "house": "n0364",
+    "dob": "41",
+    "epic": "JLG3294527"
+  },
+  {
+    "serial": "8",
+    "name": "BIKASH ADHIKARI",
+    "relationType": "FATHER",
+    "relation": "ISHWAR ADHIKARI",
+    "house": "n0359",
+    "dob": "24",
+    "epic": "SKW2574374"
+  },
+  {
+    "serial": "9",
+    "name": "ISHWAR CHANDRA ADHIKARI",
+    "relationType": "FATHER",
+    "relation": "FAJIN CHANDRA ADHIKARI",
+    "house": "n0359",
+    "dob": "54",
+    "epic": "WB/03/015/186320"
+  },
+  {
+    "serial": "10",
+    "name": "LATIKA ROY ADHIKARI",
+    "relationType": "HUSBAND",
+    "relation": "BINOD ADHIKARI",
+    "house": "n0042",
+    "dob": "27",
+    "epic": "SKW2066942"
+  },
+  {
+    "serial": "11",
+    "name": "PINKI ADHIKARI",
+    "relationType": "FATHER",
+    "relation": "RANJIT ADHIKARI",
+    "house": "n0176",
+    "dob": "27",
+    "epic": "SKW2066926"
+  },
+  {
+    "serial": "12",
+    "name": "MAHABBAD ALI",
+    "relationType": "FATHER",
+    "relation": "JAFIRUDDIN MIYA",
+    "house": "n0289",
+    "dob": "26",
+    "epic": "SKW2189918"
   }
 ]
