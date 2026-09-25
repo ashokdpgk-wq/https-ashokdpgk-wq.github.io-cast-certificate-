@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOTER CARD SEARCH SYSTEM</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#eef3f8;padding:20px}
+.container{max-width:1100px;margin:auto}
+.header{background:linear-gradient(135deg,#1565c0,#0d47a1);color:#fff;padding:25px;text-align:center;border-radius:15px;box-shadow:0 6px 18px rgba(0,0,0,.15);margin-bottom:20px}
+.header h1{font-size:30px;margin-bottom:8px;letter-spacing:1px}.header p{font-size:15px}
+.searchBox,.surnameBox,.form{background:#fff;padding:20px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.08);margin-bottom:20px}
+#searchInput{width:100%;padding:15px;font-size:17px;border:2px solid #1976d2;border-radius:10px;outline:none;text-transform:uppercase}
+#searchInput:focus{border-color:#0d47a1}
+.counter{display:flex;gap:15px;margin-top:15px}.counter div{flex:1;background:#f8fafc;padding:15px;border-radius:10px;text-align:center;font-weight:bold}.counter span{display:block;font-size:28px;margin-top:5px;color:#1565c0}
+.buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.buttons button{padding:15px;border:none;border-radius:10px;font-size:15px;font-weight:bold;cursor:pointer;color:#fff;transition:.25s}.buttons button:hover{transform:scale(1.03)}
+#addBtn{background:#16a34a}#backupBtn{background:#2563eb}#restoreBtn{background:#ea580c}#deleteBtn{background:#dc2626}
+.form{display:none}.form input,.form select{width:100%;padding:14px;margin-bottom:15px;font-size:16px;border:2px solid #ddd;border-radius:10px;outline:none}.form input:focus,.form select:focus{border-color:#1565c0}
+#saveBtn{width:100%;padding:15px;background:#16a34a;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:bold;cursor:pointer}
+#result{display:flex;flex-direction:column;gap:15px}.card{padding:18px;border-radius:15px;border:2px solid #dbeafe;box-shadow:0 5px 15px rgba(0,0,0,.12);background:#fff}
+.cardRow{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.left{flex:1}.left h3{font-size:22px;color:#0f172a;margin-bottom:10px}.left p{font-size:15px;margin:6px 0}
+.right{text-align:right;min-width:220px;font-size:15px;line-height:28px}.editBtn{margin-top:10px;padding:8px 18px;background:#2563eb;border:none;border-radius:8px;color:#fff;font-weight:bold;cursor:pointer}
+#noRecord{display:none;background:#fff;padding:20px;text-align:center;font-size:18px;font-weight:bold;color:#dc2626;border-radius:15px}
+.surnameBox h2{text-align:center;color:#0f172a;margin-bottom:15px;font-size:22px}.surnameCounts{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px}
+.surnameItem{background:#f8fafc;border:1px solid #dbeafe;border-radius:10px;padding:12px;text-align:center;font-weight:bold}.surnameName{display:block;color:#1565c0;font-size:15px}.surnameNumber{display:block;color:#0f172a;font-size:25px;margin-top:4px}
+@media(max-width:700px){body{padding:10px}.buttons{grid-template-columns:repeat(2,1fr)}.counter{flex-direction:column}.cardRow{flex-direction:column}.right{text-align:left;min-width:100%}.header h1{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header"><h1>VOTER CARD SEARCH SYSTEM<br>PART: 104</h1><p>Kalirhat</p><p id="dataStatus" style="margin-top:8px;font-weight:bold">Loading voter data...</p></div>
+
+<div class="searchBox">
+<input type="text" id="searchInput" placeholder="SEARCH SERIAL NO / NAME / HOUSE NO / EPIC NO">
+<div class="counter">
+<div>TOTAL RECORD<span id="totalCount">0</span></div>
+<div>SEARCH RESULT<span id="searchCount">0</span></div>
+</div>
+</div>
+
+<div class="surnameBox">
+<h2>📊 পদবি অনুযায়ী Count</h2>
+<div id="surnameCounts" class="surnameCounts"></div>
+</div>
+
+<div class="buttons">
+<button id="addBtn">ADD VOTER</button>
+<button id="backupBtn">BACKUP</button>
+<button id="restoreBtn">RESTORE</button>
+<button id="deleteBtn">DELETE ALL</button>
+<input type="file" id="restoreFile" accept=".json" hidden>
+</div>
+
+<div class="form" id="form">
+<input type="number" id="serialInput" placeholder="SERIAL NO">
+<input type="text" id="nameInput" placeholder="NAME">
+<select id="relationType">
+<option value="FATHER">FATHER</option><option value="MOTHER">MOTHER</option>
+<option value="HUSBAND">HUSBAND</option><option value="WIFE">WIFE</option><option value="C/O">C/O</option>
+</select>
+<input type="text" id="relationInput" placeholder="RELATION NAME">
+<input type="text" id="houseInput" placeholder="House No">
+<input type="text" id="dobInput" placeholder="DOB (DD/MM/YYYY)">
+<select id="religionInput">
+<option value="">RELIGION (OPTIONAL)</option><option value="MUSLIM">MUSLIM</option><option value="HINDU">HINDU</option><option value="OTHER">OTHER</option>
+</select>
+<input type="text" id="epicInput" placeholder="EPIC NO">
+<button id="saveBtn">SAVE VOTER</button>
+</div>
+
+<div id="result"></div>
+<div id="noRecord">NO RECORD FOUND</div>
+</div>
+
+<script src="voter_104_backup.js" type="text/javascript"></script>
+<script>
+if (!Array.isArray(window.voterData)) {
+  document.body.insertAdjacentHTML("afterbegin",
+    '<div style="background:#fee2e2;color:#991b1b;padding:15px;margin:10px;border-radius:10px;text-align:center;font-weight:bold">ERROR: voter-data.js could not be loaded. Keep voter-data.js in the same folder as index.html.</div>'
+  );
+}
+let data=Array.isArray(window.voterData)?JSON.parse(JSON.stringify(window.voterData)):[];
+let editingIndex=-1;
+const EDIT_PASSWORD="12345";
+
+const $=id=>document.getElementById(id);
+if (Array.isArray(window.voterData)) {
+  document.getElementById("dataStatus").textContent = "✓ VOTER DATA LOADED: " + window.voterData.length + " RECORDS";
+} else {
+  document.getElementById("dataStatus").textContent = "✗ VOTER DATA NOT LOADED";
+}
+const searchInput=$("searchInput"),totalCount=$("totalCount"),searchCount=$("searchCount"),
+result=$("result"),noRecord=$("noRecord"),form=$("form"),addBtn=$("addBtn"),
+saveBtn=$("saveBtn"),backupBtn=$("backupBtn"),restoreBtn=$("restoreBtn"),
+restoreFile=$("restoreFile"),deleteBtn=$("deleteBtn"),serialInput=$("serialInput"),
+nameInput=$("nameInput"),relationType=$("relationType"),relationInput=$("relationInput"),
+houseInput=$("houseInput"),dobInput=$("dobInput"),epicInput=$("epicInput"),religionInput=$("religionInput");
+
+const mainSurnameGroup=new Set(["ROY","RAY","BARMAN","ADHIKARI"]);
+const muslimSurnames=new Set(["HAQUE","HOK","HAK","HAQ","KHAN","KHA","ALI","MIYA","MIA","BIBI","VIVI","RAHMAN","PARVIN","PARVEEN","PARBIN","BEGUM","BEGAM","BANU","BANO","KHATUN","KHATOON","SULTANA","SULTAN","JAHAN","JAHANARA","AKHTAR","AKTER","ARA","FATEMA","FATIMA","YESMIN","YASMIN","NASRIN","NASREEN","RUKSANA","ROKSANA","SHAH","SHAIKH","SHEIKH","SHEIK","ANSARI","MALLICK","MALIK","MANDALY","MIRZA","ABBAS","AHMED","AHMAD","HOSSAIN","HUSSAIN","HUSAIN","ISLAM","KARIM","KADER","QADIR","KAZI","SIDDIQUE","SIDDIQUI","SAHAJAHAN","MAHMUD","MAHMOOD","MOHAMMAD","MOHAMMED","MUSTAFA","OMAR","OSMAN","USMAN","SALAM","SALMAN","SHIEKH","MOLLA","MOLLAH","MULLA","FAKIR","FAROOQ","FARUK","JAMAL","KAMAL","NASIR","NAYAR","RAFIQ","RAFIQUE","SAMAD","SAMADDAR","SERAZUL","SIRAJ","TAJ","TAJU","TOFAYEL","WAHAB","YUSUF","ZAKIR","ZAMAN","JIA","JIYA"]);
+const knownSurnames=new Set(["ROY","RAY","BARMAN","ADHIKARI","GHOSH","SARKAR","MODAK","DAS","BISWAS","CHAKROBORTY","CHAKRABORTY","BHATTACHARJEE","BHATTACHARYA","MAHANTA","RANA","DEB","DUTTA","SAHA","PAUL","MONDAL","MANDAL","SEN","BOSE","BASU","BANERJEE","BANERJI","MUKHERJEE","MUKHOPADHYAY","CHATTERJEE","CHATTOPADHYAY","DASGUPTA","GANGULY","GANGULI","DATTA","MITRA","PAL","PRAMANIK","KARMAKAR","KUNDU","HALDER"]);
+
+function getSurnameGroup(name,religion){
+ const words=String(name||"").trim().toUpperCase().replace(/\s+/g," ").split(" ").filter(Boolean);
+ if(!words.length)return"OTHER SURNAME";
+ const last=words.at(-1),secondLast=words.length>=2?words.at(-2):"";
+ if(String(religion||"").toUpperCase()==="MUSLIM"||muslimSurnames.has(last))return"MUSLIM";
+ if(words.length>=3&&knownSurnames.has(secondLast)&&knownSurnames.has(last))return"TWO SURNAME";
+ if(mainSurnameGroup.has(last))return"ROY / RAY / BARMAN / ADHIKARI";
+ if(last==="GHOSH")return"GHOSH";
+ if(last==="MODAK"||last==="SARKAR")return"MODAK / SARKAR";
+ return"OTHER SURNAME";
+}
+function updateSurnameCounts(list=data){
+ const counts={"ROY / RAY / BARMAN / ADHIKARI":0,"TWO SURNAME":0,"GHOSH":0,"MODAK / SARKAR":0,"MUSLIM":0,"OTHER SURNAME":0},seen=new Set();
+ list.forEach(x=>{const e=String(x.epic||"").trim().toUpperCase();if(e&&seen.has(e))return;if(e)seen.add(e);counts[getSurnameGroup(x.name,x.religion)]++});
+ $("surnameCounts").innerHTML=`
+ <div class="surnameItem"><span class="surnameName">রায় / বর্মন / অধিকারী</span><span class="surnameNumber">${counts["ROY / RAY / BARMAN / ADHIKARI"]}</span></div>
+ <div class="surnameItem"><span class="surnameName">দুই পদবি যুক্ত নাম</span><span class="surnameNumber">${counts["TWO SURNAME"]}</span></div>
+ <div class="surnameItem"><span class="surnameName">ঘোষ</span><span class="surnameNumber">${counts.GHOSH}</span></div>
+ <div class="surnameItem"><span class="surnameName">মোদক / সরকার</span><span class="surnameNumber">${counts["MODAK / SARKAR"]}</span></div>
+ <div class="surnameItem"><span class="surnameName">মুসলিম</span><span class="surnameNumber">${counts.MUSLIM}</span></div>
+ <div class="surnameItem"><span class="surnameName">অন্যান্য পদবি</span><span class="surnameNumber">${counts["OTHER SURNAME"]}</span></div>`;
+}
+function updateTotal(){totalCount.textContent=data.length;updateSurnameCounts(data)}
+function rainbow(i){const c=[["#E3F2FD","#BBDEFB"],["#E8F5E9","#C8E6C9"],["#FFF8E1","#FFECB3"],["#FCE4EC","#F8BBD0"],["#F3E5F5","#E1BEE7"],["#E0F7FA","#B2EBF2"],["#FFF3E0","#FFE0B2"]][i%7];return`linear-gradient(135deg,${c[0]},${c[1]})`}
+function getAge(dob){
+ if(!dob)return"-";if(/^\d{4}$/.test(dob))return new Date().getFullYear()-Number(dob);
+ const p=dob.split("/");if(p.length!==3)return dob;const d=new Date(p[2],p[1]-1,p[0]),t=new Date();let a=t.getFullYear()-d.getFullYear();
+ if(t.getMonth()<d.getMonth()||(t.getMonth()===d.getMonth()&&t.getDate()<d.getDate()))a--;return a;
+}
+function showData(list){
+ result.innerHTML="";searchCount.textContent=list.length;noRecord.style.display=list.length?"none":"block";updateSurnameCounts(list);
+ list.forEach((item,i)=>{const idx=data.indexOf(item);result.innerHTML+=`
+ <div class="card" style="background:${rainbow(i)}"><div class="cardRow"><div class="left">
+ <h3>${esc(item.name)}</h3><p><b>Serial No :</b> ${esc(item.serial)}</p>
+ <p><b>${esc(item.relationType)} :</b> ${esc(item.relation)}</p><p><b>House No :</b> ${esc(item.house)}</p>
+ <p><b>DOB / AGE :</b> ${esc(getAge(item.dob))}</p></div><div class="right">
+ <b>EPIC NO</b><br>${esc(item.epic)}<br><br><button class="editBtn" onclick="editCustomer(${idx})">EDIT</button>
+ </div></div></div>`});
+}
+function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+searchInput.addEventListener("input",function(){
+ const text=this.value.trim().toUpperCase();if(!text){result.innerHTML="";searchCount.textContent="0";noRecord.style.display="none";return}
+ showData(data.filter(x=>String(x.serial||"").toUpperCase().includes(text)||String(x.name||"").toUpperCase().startsWith(text)||String(x.house||"").toUpperCase().startsWith(text)||String(x.epic||"").toUpperCase().startsWith(text)||String(x.relation||"").toUpperCase().startsWith(text)));
+});
+addBtn.onclick=()=>{editingIndex=-1;[serialInput,nameInput,relationInput,houseInput,dobInput,epicInput].forEach(x=>x.value="");religionInput.value="";relationType.selectedIndex=0;form.style.display=form.style.display==="block"?"none":"block";nameInput.focus()};
+function editCustomer(index){
+ const pass=prompt("ENTER EDIT PASSWORD");if(pass!==EDIT_PASSWORD){alert("WRONG PASSWORD");return}
+ editingIndex=index;const x=data[index];serialInput.value=x.serial||"";nameInput.value=x.name||"";relationType.value=x.relationType||"FATHER";relationInput.value=x.relation||"";houseInput.value=x.house||"";dobInput.value=x.dob||"";epicInput.value=x.epic||"";religionInput.value=x.religion||"";form.style.display="block";window.scrollTo({top:0,behavior:"smooth"});
+}
+saveBtn.onclick=()=>{ if(!Array.isArray(window.voterData)){alert("voter-data.js is not loaded. Keep both files in the same folder.");return;}
+ const serial=serialInput.value.trim(),name=nameInput.value.trim().toUpperCase(),relation=relationInput.value.trim().toUpperCase(),house=houseInput.value.trim().toLowerCase(),dob=dobInput.value.trim(),epic=epicInput.value.trim().toUpperCase(),religion=religionInput.value;
+ if(!serial)return alert("ENTER SERIAL NO");if(!name)return alert("ENTER NAME");if(!relation)return alert("ENTER RELATION NAME");if(!house)return alert("ENTER HOUSE NO");if(!epic)return alert("ENTER EPIC NO");
+ if(!/^(?:[A-Z]{3}[0-9]{7}|WB\/\d{2}\/\d{3}\/\d{6})$/i.test(epic))return alert("INVALID EPIC NUMBER");
+ if(data.some((x,i)=>i!==editingIndex&&String(x.serial)===serial))return alert("SERIAL NO ALREADY EXISTS");
+ if(data.some((x,i)=>i!==editingIndex&&String(x.epic).toUpperCase()===epic))return alert("EPIC NO ALREADY EXISTS");
+ const voter={serial,name,relationType:relationType.value,relation,house,dob,epic,religion};
+ if(editingIndex<0)data.push(voter);else data[editingIndex]=voter;
+ form.style.display="none";searchInput.value="";result.innerHTML="";searchCount.textContent="0";noRecord.style.display="none";updateTotal();alert("VOTER SAVED SUCCESSFULLY");
+};
+backupBtn.onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="voter_backup.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
+restoreBtn.onclick=()=>restoreFile.click();
+restoreFile.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!Array.isArray(x))throw 0;data=x;updateTotal();result.innerHTML="";searchInput.value="";searchCount.textContent="0";noRecord.style.display="none";alert("BACKUP RESTORED SUCCESSFULLY")}catch{alert("INVALID JSON FILE")}};r.readAsText(f);this.value=""};
+deleteBtn.onclick=()=>{if(!confirm("DELETE ALL RECORDS ?"))return;data=[];updateTotal();result.innerHTML="";searchInput.value="";searchCount.textContent="0";noRecord.style.display="none";form.style.display="none";alert("ALL RECORDS DELETED")};
+[nameInput,relationInput,epicInput].forEach(x=>x.addEventListener("input",()=>x.value=x.value.toUpperCase()));
+houseInput.addEventListener("input",()=>houseInput.value=houseInput.value.toLowerCase());
+updateTotal();
+</script>
+</body>
+</html>
 
