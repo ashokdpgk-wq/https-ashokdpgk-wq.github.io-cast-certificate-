@@ -1402,8 +1402,8 @@ window.voterData=[
     "house": "n0017",
     "dob": "59",
     "epic": "WB/03/015/168648"
-  }
-    {
+  },
+  {
     "serial": "157",
     "name": "RUPKUMAR ROY",
     "relationType": "FATHER",
