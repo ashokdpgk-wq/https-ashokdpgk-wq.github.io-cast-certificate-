@@ -2583,4 +2583,3 @@ window.voterData=[
     "epic": "SKW1491141"
   }
 ]
-]
