@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collection, Expense & Balance Register</title>
+<style>
+:root{--ink:#172554;--blue:#1d4ed8;--line:#cbd5e1;--bg:#f1f5f9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,"Noto Sans Bengali",sans-serif;color:#0f172a}
+header{background:linear-gradient(120deg,#172554,#1d4ed8);color:white;padding:20px 16px;text-align:center}
+header h1{margin:0 0 6px;font-size:clamp(20px,4vw,30px)}header p{margin:0;color:#dbeafe}
+.wrap{max-width:1400px;margin:20px auto;padding:0 12px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.year-picker{display:flex;gap:7px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:9px;padding:6px 10px;font-weight:700}.year-picker select{border:1px solid #cbd5e1;border-radius:6px;padding:7px;background:#fff;font:inherit}
+button{border:0;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer;background:var(--blue);color:#fff}button.secondary{background:#334155}button.green{background:#15803d}button.red{background:#b91c1c}
+.status{margin-left:auto;font-size:14px;font-weight:700;color:#166534}
+.grid{display:grid;grid-template-columns:1.1fr 1fr 1fr .75fr;gap:12px;align-items:stretch}.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 3px 10px #0f172a0b;min-width:0}
+.card h2{margin:0;background:#dbeafe;color:#1e3a8a;padding:12px;text-align:center;font-size:20px;border-bottom:1px solid var(--line)}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:260px}th,td{border:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:middle}th{background:#f8fafc;font-size:13px}
+td input{width:100%;min-width:50px;border:1px solid transparent;background:transparent;padding:7px 4px;font:inherit;border-radius:5px;color:inherit}td input:focus{outline:2px solid #93c5fd;background:#fff}td input[readonly]{cursor:default}
+.total-row td{background:#eff6ff;font-weight:700}.total-row input{font-weight:700;color:#1d4ed8}.balance-card{display:flex;flex-direction:column}.balance-main{padding:22px 12px;text-align:center;flex:1}.balance-main .label{color:#475569;font-size:14px}.balance-value{font-size:clamp(28px,4vw,40px);font-weight:800;color:#15803d;margin:12px 0;overflow-wrap:anywhere}.deposit-value{font-size:clamp(22px,3vw,30px);font-weight:800;color:#1d4ed8;margin:8px 0 18px;overflow-wrap:anywhere}.balance-divider{border:0;border-top:1px solid var(--line);margin:14px 0}.formula{font-size:13px;color:#64748b;line-height:1.5}
+.note{margin-top:14px;background:#fff;border:1px solid var(--line);padding:12px 14px;border-radius:10px;color:#475569;font-size:14px}.error{color:#b91c1c}.busy{opacity:.65;pointer-events:none}
+@media(max-width:950px){.grid{grid-template-columns:1fr 1fr}.balance-card{min-height:230px}}@media(max-width:560px){.grid{grid-template-columns:1fr}.status{width:100%;margin-left:0}.toolbar button{flex:1}}
+@media print{body{background:white}.toolbar,.note{display:none}header{background:white;color:#111;border-bottom:2px solid #111}header p{color:#333}.wrap{max-width:none;margin:8px auto}.grid{grid-template-columns:1.1fr 1fr 1fr .75fr;gap:5px}.card{box-shadow:none;break-inside:avoid}.card h2{background:#eee;color:#111}td input{border:0;padding:3px 1px}th,td{padding:4px;font-size:10px}.balance-value{font-size:22px}}
+</style>
+</head>
+<body>
+<header><h1>Collection, Expense & Balance Register</h1><p>সংগ্রহ • খরচ • সদস্য জমা • বর্তমান ব্যালেন্স</p></header>
+<div class="wrap">
+ <div class="toolbar">
+  <label class="year-picker">Year নির্বাচন <select id="yearSelect" onchange="changeYear()"></select></label>
+  <button id="editBtn" onclick="unlock()">🔒 Edit খুলুন</button><button class="secondary" onclick="lock()">🔐 Lock</button>
+  <button class="green" onclick="addRow('a')">+ A-তে সারি</button><button class="green" onclick="addRow('b')">+ B-তে সারি</button><button class="green" onclick="addRow('c')">+ C-তে সারি</button>
+  <button class="secondary" onclick="window.print()">🖨 Print</button><button class="secondary" onclick="downloadBackup()">⬇ Backup Download</button><button class="secondary" onclick="document.getElementById('backupFile').click()">⬆ Restore Backup</button><input id="backupFile" type="file" accept=".json,application/json" hidden onchange="restoreBackupFile(event)"><button class="red" onclick="resetData()">Reset</button><span class="status" id="status">ডেটা লোড হচ্ছে…</span>
+ </div>
+ <div class="grid">
+  <section class="card"><h2>A — Collection</h2><div class="table-wrap"><table id="tableA"><thead><tr><th>Collection date</th><th>Amount (₹)</th><th>Others / Details</th></tr></thead><tbody></tbody><tfoot><tr class="total-row"><td>Total</td><td><input id="totalA" readonly value="0"></td><td id="otherTotal">—</td></tr></tfoot></table></div></section>
+  <section class="card"><h2>B — Expenses</h2><div class="table-wrap"><table id="tableB"><thead><tr><th>Date</th><th>Things name</th><th>Amount (₹)</th></tr></thead><tbody></tbody><tfoot><tr class="total-row"><td colspan="2">Total</td><td><input id="totalB" readonly value="0"></td></tr></tfoot></table></div></section>
+  <section class="card"><h2>C — Member Deposit</h2><div class="table-wrap"><table id="tableC"><thead><tr><th>Member</th><th>Amount (₹)</th><th>Date</th></tr></thead><tbody></tbody><tfoot><tr class="total-row"><td>Total</td><td><input id="totalC" readonly value="0"></td><td>—</td></tr></tfoot></table></div></section>
+  <section class="card balance-card"><h2>D — Balance</h2><div class="balance-main"><div class="label">মোট জমা রাশি (A + C)</div><div class="deposit-value" id="totalDeposits">₹0</div><hr class="balance-divider"><div class="label">Available balance</div><div class="balance-value" id="balance">₹0</div><div class="formula">Balance = মোট জমা − মোট খরচ<br>(A + C) − B</div></div></section>
+ </div>
+ <div class="note">ডেটা Google Sheets এবং এই ব্রাউজারের Local Storage—দুই জায়গায় সেভ হয়। Google Sheets সংযোগ না থাকলেও Local Storage-এ সেভ থাকবে; অনলাইনে ফিরলে সিঙ্কের চেষ্টা হবে। অন্য ডিভাইসে Local Storage-এর তথ্য দেখা যায় না। Edit password ডিফল্ট <b>1234</b>। Reset করলে সব এন্ট্রি মুছে যাবে। <br><a href="https://script.google.com/macros/s/AKfycbyYeXzUYnVFbV_LNWifEfi7Ukl-FAlRCqcfkz78JZ906l5etfPpZfcRMLpi2toUB3tUvg/exec" target="_blank" rel="noopener">অনলাইন Collection Register খুলুন</a></div>
+</div>
+<script>
+const APPS_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyYeXzUYnVFbV_LNWifEfi7Ukl-FAlRCqcfkz78JZ906l5etfPpZfcRMLpi2toUB3tUvg/exec"; // আপনার অনলাইন Web App লিংক
+const EDIT_PASSWORD = "1234"; // Code.gs-এর password-এর সঙ্গে মিলতে হবে
+let editable=false, sessionPassword="", autoSaveTimer=null, selectedYear=new Date().getFullYear(), data={a:[],b:[],c:[]}, loaded=false;
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dateYear=s=>{let m=String(s||"").match(/(?:^|\D)(20\d{2})(?:\D|$)/);if(m)return +m[1];m=String(s||"").match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{4})$/);return m?+m[3]:null};
+function mapRow(r){let section=r.section, details=r.details||"", date=r.date||"", amount=Number(r.amount)||0;
+ if(section==="a")return {id:r.id,date,amount,other:details};
+ if(section==="b")return {id:r.id,date,amount,thing:details};
+ return {id:r.id,date,amount,member:details};}
+const LOCAL_STORAGE_KEY = "collection-register-data-v1";
+const LOCAL_PENDING_KEY = "collection-register-pending-sync-v1";
+function hasAppsScriptBridge(){ return !!(window.google && window.google.script && window.google.script.run); }
+function localRows(){
+  try { const saved=JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)||"null"); return saved && Array.isArray(saved.rows) ? saved : null; }
+  catch(e){ return null; }
+}
+function persistLocal(){
+  try {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
+      savedAt:new Date().toISOString(), selectedYear, rows:allRows().map(({section,r})=>({
+        section,date:r.date||"",details:section==="a"?(r.other||""):section==="b"?(r.thing||""):(r.member||""),
+        amount:Number(r.amount)||0,id:r.id||("entry-"+Date.now()+"-"+Math.random()),
+        year:dateYear(r.date)||selectedYear
+      }))
+    }));
+    localStorage.setItem(LOCAL_PENDING_KEY,"1");
+    return true;
+  } catch(e) {
+    setStatus("⚠️ Local Storage-এ সেভ হয়নি — ব্রাউজারের storage খালি করুন",true);
+    return false;
+  }
+}
+function rowsToData(rows){
+  const next={a:[],b:[],c:[]};
+  (rows||[]).forEach(r=>{if(next[String(r.section||"").toLowerCase()])next[String(r.section).toLowerCase()].push(mapRow(r));});
+  return next;
+}
+function loadData(){
+  const local=localRows();
+  if(local){
+    data=rowsToData(local.rows);
+    if(Number(local.selectedYear)) selectedYear=Number(local.selectedYear);
+    loaded=true; render();
+    setStatus(localStorage.getItem(LOCAL_PENDING_KEY)==="1"?"📱 Local Storage-এ সেভ করা ডেটা — Google Sheets-এ সিঙ্ক অপেক্ষায়":"📱 Local Storage থেকে ডেটা লোড হয়েছে");
+  }
+  if(!navigator.onLine || !hasAppsScriptBridge()){
+    if(!local){loaded=true;render();setStatus("📱 অফলাইন — নতুন ডেটা Local Storage-এ সেভ হবে");}
+    else setStatus("📱 Local Storage চলছে — অনলাইন হলে সিঙ্ক হবে");
+    return;
+  }
+  if(localStorage.getItem(LOCAL_PENDING_KEY)==="1" && local){
+    setStatus("☁️ Local ডেটা Google Sheets-এ সিঙ্ক হচ্ছে…");
+    google.script.run.withSuccessHandler(res=>{
+      localStorage.removeItem(LOCAL_PENDING_KEY);
+      setStatus("✅ Local ডেটা Google Sheets-এ সিঙ্ক হয়েছে — "+res.count+"টি এন্ট্রি");
+    }).withFailureHandler(err=>{
+      setStatus("📱 Local Storage-এ ডেটা নিরাপদ আছে — সিঙ্ক পরে হবে");
+    }).saveRows({password:EDIT_PASSWORD,rows:local.rows});
+    return;
+  }
+  setStatus("☁️ Google Sheet থেকে ডেটা লোড হচ্ছে…");
+  google.script.run.withSuccessHandler(rows=>{
+    data=rowsToData(rows);loaded=true;render();persistLocal();
+    localStorage.removeItem(LOCAL_PENDING_KEY);
+    setStatus("✅ Google Sheets ও Local Storage-এ ডেটা সেভ হয়েছে");
+  }).withFailureHandler(err=>{
+    if(!local){data={a:[],b:[],c:[]};loaded=true;render();}
+    setStatus("📱 Google Sheets সংযোগ নেই — Local Storage ব্যবহার হচ্ছে");
+  }).getRows();
+}
+function setStatus(s,bad=false){let el=document.getElementById("status");el.textContent=s;el.className="status"+(bad?" error":"");}
+function allRows(){return ["a","b","c"].flatMap(section=>data[section].map(r=>({section,r})));}
+function fillYearSelect(){let years=new Set([new Date().getFullYear()]);allRows().forEach(({r})=>{let y=dateYear(r.date);if(y)years.add(y)});let sel=document.getElementById("yearSelect");sel.innerHTML=[...years].sort((a,b)=>b-a).map(y=>`<option value="${y}">${y}</option>`).join("");if(!years.has(+selectedYear))selectedYear=new Date().getFullYear();sel.value=String(selectedYear);}
+function changeYear(){selectedYear=+document.getElementById("yearSelect").value;render();}
+function visibleRows(k){return data[k].map((r,i)=>({r,i})).filter(x=>dateYear(x.r.date)===+selectedYear);}
+function inp(v,s,i,k,type="text"){return `<input ${editable?"":"readonly"} type="${type}" value="${esc(v)}" data-s="${s}" data-i="${i}" data-k="${k}" aria-label="${k}">`;}
+function render(){fillYearSelect();for(const [k,id] of [["a","tableA"],["b","tableB"],["c","tableC"]]){let body=document.querySelector(`#${id} tbody`);body.innerHTML=visibleRows(k).map(({r,i})=>k==="a"?`<tr><td>${inp(r.date,k,i,"date")}</td><td>${inp(r.amount,k,i,"amount","number")}</td><td>${inp(r.other,k,i,"other")}</td></tr>`:k==="b"?`<tr><td>${inp(r.date,k,i,"date")}</td><td>${inp(r.thing,k,i,"thing")}</td><td>${inp(r.amount,k,i,"amount","number")}</td></tr>`:`<tr><td>${inp(r.member,k,i,"member")}</td><td>${inp(r.amount,k,i,"amount","number")}</td><td>${inp(r.date,k,i,"date")}</td></tr>`).join("");}
+ document.querySelectorAll("input[data-s]").forEach(el=>{
+   el.addEventListener("input",e=>{let x=e.target,r=data[x.dataset.s][+x.dataset.i];if(!r)return;r[x.dataset.k]=x.type==="number"?(x.value===""?"":Number(x.value)):x.value;persistLocal();scheduleAutoSave();calculate();});
+   el.addEventListener("change",e=>{let x=e.target,r=data[x.dataset.s][+x.dataset.i];if(!r)return;r[x.dataset.k]=x.type==="number"?(x.value===""?"":Number(x.value)):x.value;render();persistLocal();scheduleAutoSave();});
+ });
+ calculate();document.getElementById("status").textContent=editable?"✏️ Edit mode active":"☁️ Google Sheet mode";document.getElementById("editBtn").textContent=editable?"✏️ Edit চলছে":"🔒 Edit খুলুন";}
+function calculate(){let sum=k=>visibleRows(k).reduce((s,x)=>s+(Number(x.r.amount)||0),0),a=sum("a"),b=sum("b"),c=sum("c");document.getElementById("totalA").value=a.toLocaleString("en-IN");document.getElementById("totalB").value=b.toLocaleString("en-IN");document.getElementById("totalC").value=c.toLocaleString("en-IN");let kg=visibleRows("a").map(x=>(x.r.other||"").match(/(\d+(?:\.\d+)?)\s*kg/i)).filter(Boolean).reduce((s,m)=>s+Number(m[1]),0);document.getElementById("otherTotal").textContent=kg?kg+" kg total":"—";document.getElementById("totalDeposits").textContent="₹"+(a+c).toLocaleString("en-IN");document.getElementById("balance").textContent="₹"+(a+c-b).toLocaleString("en-IN");}
+function unlock(){let p=prompt("Edit password দিন:");if(p===null)return;if(p===EDIT_PASSWORD){sessionPassword=p;editable=true;render();setStatus("✏️ Edit mode active — পরিবর্তন স্বয়ংক্রিয়ভাবে সেভ হবে");}else alert("ভুল password।");}
+function lock(){editable=false;sessionPassword="";if(autoSaveTimer)clearTimeout(autoSaveTimer);render();}
+
+function scheduleAutoSave(){
+  if(!editable || !sessionPassword) return;
+  persistLocal();
+  if(autoSaveTimer) clearTimeout(autoSaveTimer);
+  setStatus("✏️ পরিবর্তন হয়েছে — সেভ হচ্ছে…");
+  autoSaveTimer=setTimeout(()=>saveToServer(sessionPassword,true),1000);
+}
+function saveToServer(password, automatic=false){
+  const rows=allRows().map(({section,r})=>({
+    section,date:r.date||"",
+    details:section==="a"?(r.other||""):section==="b"?(r.thing||""):(r.member||""),
+    amount:Number(r.amount)||0,id:r.id||("entry-"+Date.now()+"-"+Math.random()),
+    year:dateYear(r.date)||selectedYear
+  }));
+  const localOk=persistLocal();
+  if(!navigator.onLine || !hasAppsScriptBridge()){
+    setStatus(localOk?"📱 Local Storage-এ সেভ হয়েছে — অনলাইন হলে সিঙ্ক হবে":"❌ সেভ করা যায়নি",!localOk);
+    if(!automatic && !localOk) alert("Local Storage-এ সেভ করা যায়নি। ব্রাউজারের storage খালি করুন।");
+    return;
+  }
+  if(automatic) setStatus("☁️ Google Sheets-এ সেভ হচ্ছে…");
+  document.body.classList.add("busy");
+  google.script.run.withSuccessHandler(res=>{
+    document.body.classList.remove("busy");
+    localStorage.removeItem(LOCAL_PENDING_KEY);
+    setStatus("✅ Google Sheets ও Local Storage-এ সেভ হয়েছে — "+res.count+"টি এন্ট্রি");
+  }).withFailureHandler(err=>{
+    document.body.classList.remove("busy");
+    setStatus(localOk?"📱 Google Sheets সংযোগ নেই — Local Storage-এ সেভ হয়েছে":"❌ সেভ হয়নি",!localOk);
+    if(!automatic && !localOk) alert("সেভ করা যায়নি: "+(err.message||err));
+  }).saveRows({password,rows});
+}
+function downloadBackup(){
+  if(!loaded){alert("ডেটা লোড হওয়া পর্যন্ত অপেক্ষা করুন।");return;}
+  const backup={
+    format:"collection-register-backup",version:1,exportedAt:new Date().toISOString(),
+    selectedYear:selectedYear,
+    rows:allRows().map(({section,r})=>({
+      section,date:r.date||"",
+      details:section==="a"?(r.other||""):section==="b"?(r.thing||""):(r.member||""),
+      amount:Number(r.amount)||0,id:r.id||("entry-"+Date.now()+"-"+Math.random()),
+      year:dateYear(r.date)||selectedYear
+    }))
+  };
+  const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="collection-register-backup-"+new Date().toISOString().slice(0,10)+".json";
+  a.style.display="none";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1500);
+  setStatus("✅ Backup ডাউনলোড শুরু হয়েছে");
+}
+function restoreBackupFile(event){
+  const file=event.target.files && event.target.files[0];
+  if(!file) return;
+  if(!editable || !sessionPassword){
+    alert("Restore করতে আগে Edit খুলে password দিন।");
+    event.target.value="";
+    return;
+  }
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const parsed=JSON.parse(String(reader.result||""));
+      const rows=Array.isArray(parsed)?parsed:parsed.rows;
+      if(!Array.isArray(rows)) throw new Error("এই JSON ফাইলে rows পাওয়া যায়নি।");
+      const next={a:[],b:[],c:[]};
+      rows.forEach((r,i)=>{
+        const section=String(r.section||"").toLowerCase();
+        if(!["a","b","c"].includes(section)) throw new Error("সারি "+(i+1)+"-এর Section ভুল।");
+        const date=String(r.date||"");
+        const amount=Number(r.amount)||0;
+        const details=String(r.details??r.other??r.thing??r.member??"");
+        const id=String(r.id||("restored-"+Date.now()+"-"+i));
+        if(section==="a") next.a.push({id,date,amount,other:details});
+        else if(section==="b") next.b.push({id,date,amount,thing:details});
+        else next.c.push({id,date,amount,member:details});
+      });
+      if(!confirm("Backup-এ "+rows.length+"টি এন্ট্রি আছে। এটি Google Sheet-এর বর্তমান সব এন্ট্রি প্রতিস্থাপন করবে। চালিয়ে যাবেন?")) return;
+      const oldData=data, oldYear=selectedYear;
+      data=next;
+      const years=rows.map(r=>Number(r.year)||dateYear(r.date)).filter(Boolean);
+      if(years.length) selectedYear=Math.max(...years);
+      render();
+      persistLocal();
+      if(!navigator.onLine || !hasAppsScriptBridge()){
+        setStatus("📱 Backup Local Storage-এ Restore হয়েছে — অনলাইনে হলে সিঙ্ক হবে");
+        alert("Backup এই ব্রাউজারের Local Storage-এ Restore হয়েছে। Google Sheets সংযোগ হলে সিঙ্ক হবে।");
+        return;
+      }
+      setStatus("☁️ Backup Google Sheets-এ Restore হচ্ছে…");
+      document.body.classList.add("busy");
+      google.script.run.withSuccessHandler(res=>{
+        document.body.classList.remove("busy");
+        loaded=true;
+        setStatus("✅ Restore সম্পন্ন — "+res.count+"টি এন্ট্রি");
+        alert("Backup সফলভাবে Restore হয়েছে।");
+        loadData();
+      }).withFailureHandler(err=>{
+        document.body.classList.remove("busy");
+        persistLocal();
+        render();
+        setStatus("📱 Google Sheets-এ Restore হয়নি — Backup Local Storage-এ সেভ আছে; অনলাইনে হলে সিঙ্ক হবে");
+        alert("Google Sheets-এ এখন Restore করা যায়নি। ডেটা এই ব্রাউজারের Local Storage-এ রাখা হয়েছে; সংযোগ ফিরলে সিঙ্ক হবে।");
+      }).saveRows({password:sessionPassword,rows:allRows().map(({section,r})=>({
+        section,date:r.date||"",
+        details:section==="a"?(r.other||""):section==="b"?(r.thing||""):(r.member||""),
+        amount:Number(r.amount)||0,id:r.id||("restored-"+Date.now()+"-"+Math.random()),
+        year:dateYear(r.date)||selectedYear
+      }))});
+    }catch(err){
+      alert("Backup ফাইলটি পড়া যায়নি: "+(err.message||err));
+    }finally{
+      event.target.value="";
+    }
+  };
+  reader.onerror=()=>{alert("ফাইল পড়া যায়নি।");event.target.value="";};
+  reader.readAsText(file);
+}
+
+function addRow(k){if(!editable){alert("নতুন সারি যোগ করতে আগে Edit খুলুন।");return;}let now=new Date(),pad=n=>String(n).padStart(2,"0"),d=+selectedYear===now.getFullYear()?`${pad(now.getDate())}-${pad(now.getMonth()+1)}-${now.getFullYear()}`:`01-01-${selectedYear}`;let id=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now())+Math.random();data[k].push(k==="a"?{id,date:d,amount:"",other:""}:k==="b"?{id,date:d,thing:"",amount:""}:{id,member:"",amount:"",date:d});render();persistLocal();scheduleAutoSave();}
+function resetData(){if(!editable){alert("Reset করতে আগে Edit খুলুন।");return;}if(!confirm("Google Sheet-এর সব এন্ট্রি মুছে ফেলবেন? এই কাজ ফেরানো যাবে না।"))return;data={a:[],b:[],c:[]};saveAll();}
+function saveAll(){
+ if(!editable){alert("আগে Edit খুলুন।");return;}
+ let password=sessionPassword;
+ if(!password){password=prompt("সেভ করার জন্য Edit password দিন:");if(password===null)return;if(password!==EDIT_PASSWORD){alert("ভুল password। সেভ করা হয়নি।");return;}sessionPassword=password;}
+ if(autoSaveTimer)clearTimeout(autoSaveTimer);
+ saveToServer(password,false);
+}
+const saveBtn=document.createElement("button");saveBtn.className="green";saveBtn.textContent="☁️ Save to Google Sheet";saveBtn.onclick=saveAll;document.querySelector(".toolbar").insertBefore(saveBtn,document.getElementById("status"));
+loadData();
+window.addEventListener("online",()=>{ if(localStorage.getItem(LOCAL_PENDING_KEY)==="1") loadData(); });
+</script>
+</body></html>
