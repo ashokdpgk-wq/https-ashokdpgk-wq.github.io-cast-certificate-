@@ -40,7 +40,7 @@ td input{width:100%;min-width:50px;border:1px solid transparent;background:trans
  <div class="note">ডেটা Google Sheets এবং এই ব্রাউজারের Local Storage—দুই জায়গায় সেভ হয়। Google Sheets সংযোগ না থাকলেও Local Storage-এ সেভ থাকবে; অনলাইনে ফিরলে সিঙ্কের চেষ্টা হবে। অন্য ডিভাইসে Local Storage-এর তথ্য দেখা যায় না। Edit password ডিফল্ট <b>1234</b>। Reset করলে সব এন্ট্রি মুছে যাবে। <br><a href="https://script.google.com/macros/s/AKfycbyYeXzUYnVFbV_LNWifEfi7Ukl-FAlRCqcfkz78JZ906l5etfPpZfcRMLpi2toUB3tUvg/exec" target="_blank" rel="noopener">অনলাইন Collection Register খুলুন</a></div>
 </div>
 <script>
-const APPS_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyYeXzUYnVFbV_LNWifEfi7Ukl-FAlRCqcfkz78JZ906l5etfPpZfcRMLpi2toUB3tUvg/exec"; // আপনার অনলাইন Web App লিংক
+const APPS_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwj6nvhHm-_2dIYUX7DDrc9u166RUxd7w-f9mB8kbp-ZpwxZwYTAOSs1XBZcb3l5W-yxA/exec"; // আপনার অনলাইন Web App লিংক
 const EDIT_PASSWORD = "1234"; // Code.gs-এর password-এর সঙ্গে মিলতে হবে
 let editable=false, sessionPassword="", autoSaveTimer=null, selectedYear=new Date().getFullYear(), data={a:[],b:[],c:[]}, loaded=false;
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
